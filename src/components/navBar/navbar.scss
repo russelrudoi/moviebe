@@ -1,0 +1,34 @@
+.navbar {
+    position: fixed;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 54px;
+    height: 561px;
+    padding: 55px 0 71px;
+    background: #1E242C;
+    box-shadow: 9px 4px 18px 10px rgba(0, 0, 0, 0.25);
+    border-radius: 0px 50px 50px 0px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    div:not(:last-child) {
+        margin-bottom: 30px;
+        color:white;
+
+    }
+
+    &__icon:hover {
+        cursor: pointer;
+
+        g {
+            transition: .3s ease-in-out;
+            opacity: 1;
+        }
+    }
+
+    .user {
+        margin-top: 25px;
+    }
+}
