@@ -1,0 +1,50 @@
+@import '../../../style/variables.scss';
+
+.template {
+    &__item {
+        display: flex;
+        justify-content: start;
+        flex-direction: column;
+        text-align: center;
+        transition: all .3s ease;
+
+        &:hover {
+            transform: scale(105%);
+            transition: all .3s ease;
+
+            .template__image {
+                border: 2px solid $theme-color;
+                transition: border .2s ease;
+            }
+
+            .template__title,
+            .template__year {
+                color: $theme-color;
+                transition: color .3s ease;
+            }
+        }
+    }
+
+    &__image {
+        position: relative;
+        margin: 0 auto;
+        height: 255px;
+        object-fit: cover;
+        border: 0px solid $theme-color;
+        border-radius: 10px;
+        transition: border .2s ease;
+    }
+
+    &__title {
+        margin-top: 10px;
+        font-size: 1.28rem;
+        font-weight: 300;
+        transition: color .3s ease;
+    }
+
+    &__year {
+        margin-top: 5px;
+        font-size: 1.14rem;
+        transition: color .3s ease;
+    }
+}

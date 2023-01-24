@@ -1,0 +1,52 @@
+@import '../../style/variables.scss';
+
+.template {
+    margin-top: 75px;
+
+    .swiper {
+        padding-top: 46px;
+        position: relative;
+        width: 100%;
+        min-height: 400px;
+
+        &-wrapper {
+            width: 90%;
+        }
+
+        &-button {
+
+            &-next,
+            &-prev {
+                position: absolute;
+                top: 0px;
+                z-index: 10;
+                right: 0;
+
+                &:before {
+                    content: '\27A7';
+                    color: $main-color;
+                    opacity: .85;
+                    font-size: 2.85rem;
+                }
+
+                &:hover::before {
+                    transition: all .3s ease-out;
+                    color: $theme-color;
+                }
+            }
+
+            &-prev {
+                right: 30px;
+                transform: rotateY(180deg)
+            }
+
+            &-disabled {
+                opacity: 0.5;
+
+                &:hover::before {
+                    color: $main-color;
+                }
+            }
+        }
+    }
+}

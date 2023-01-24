@@ -1,0 +1,122 @@
+@import '../../../style/variables.scss';
+
+.in-theaters {
+
+    &__item {
+        position: relative;
+        overflow: hidden;
+        height: 100%;
+        border-radius: 10px;
+
+        &::after {
+            content: "";
+            display: block;
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+            background: linear-gradient(180deg, rgba(21, 26, 32, 0) 0%, rgba(21, 26, 32, 0.99) 100%);
+        }
+    }
+
+    &__info {
+        margin: 15px 0;
+        padding: 0 20px;
+        position: absolute;
+        bottom: 5%;
+        z-index: 5;
+    }
+
+    &__title {
+        font-size: 3.43rem;
+        margin-bottom: 15px;
+    }
+
+    &__year {
+        margin-bottom: 20px;
+        font-size: 2rem;
+    }
+
+    &__plot {
+        margin-bottom: 40px;
+        font-family: 'Poppins', sans-serif;
+        font-weight: 400;
+    }
+
+    &__ratings {
+        display: flex;
+        font-size: 1.7rem;
+
+        &-name {
+            margin-right: 52.5px;
+
+            span {
+                margin-left: 5px;
+                color: $theme-color;
+            }
+        }
+    }
+
+    &__btn-watch {
+        width: 188px;
+        height: 60px;
+        border: none;
+        border-radius: 10px 0px;
+        position: absolute;
+        right: 0;
+        bottom: 5%;
+        z-index: 5;
+    }
+
+    &__big {
+        grid-area: big;
+
+        img {
+            position: relative;
+            bottom: 8%;
+            width: 100%;
+        }
+    }
+
+    &__small {
+        width: 100%;
+        height: 100%;
+        grid-area: small;
+
+        .in-theaters__info {
+            bottom: 0;
+        }
+
+        .in-theaters__title {
+            font-size: 1.87rem;
+        }
+
+        .in-theaters__year {
+            font-size: 1.6rem;
+        }
+
+        .in-theaters__plot {
+            margin-bottom: 30px;
+        }
+
+        .in-theaters__ratings {
+            font-size: 1.28rem;
+
+            &-name {
+                margin-right: 20px;
+            }
+        }
+
+        .in-theaters__btn-watch {
+            width: 99px;
+            height: 31.5px;
+            font-size: 1.5rem;
+            bottom: 0;
+        }
+    }
+
+    &__small.second {
+        grid-area: small-s;
+    }
+}

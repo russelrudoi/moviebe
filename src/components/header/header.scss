@@ -1,7 +1,34 @@
-.mova__header {
-    padding-top: 30px;
+@import '../../style/variables.scss';
 
-    .inner_wrapper {
+.header {
+    padding-top: 30px;
+    top: -70px;
+    transition: top 1s;
+
+    &-hide {
+        position: absolute;
+        visibility: hidden;
+    }
+
+    &-fixed {
+        display: flex;
+        align-items: center;
+        position: fixed;
+        top: 0;
+        height: 50px;
+        padding-top: 0;
+        width: 100%;
+        background: #1E242C;
+        z-index: 1000;
+
+    }
+
+    &-unfixed {
+        top: -70px;
+        transition: top 1s;
+    }
+
+    .inner__wrapper {
         display: flex;
         justify-content: space-between;
     }
@@ -10,25 +37,44 @@
         height: 40px;
     }
 
-    .person {
-        display: flex;
-        font-family: 'Poppins', sans-serif;
-        align-items: center;
+    &__nav {
 
-        &__photo {
-            margin-right: 8px;
-            height: 40px;
-            filter: drop-shadow(0px 20px 60px rgba(0, 0, 0, 0.15));
-            border-radius: 10px 30px 0px 10px;
-        }
 
-        &__name {
-            margin-bottom: 3px;
-            font-weight: 600;
-        }
+        &__list {
+            height: 100%;
+            display: flex;
+            align-items: center;
+            gap: 40px;
+            font-size: 2rem;
 
-        &__status {
-            font-size: .85rem;
+            li {
+                position: relative;
+                transition: color .15s ease;
+                cursor: pointer;
+
+                &::before {
+                    position: absolute;
+                    bottom: -6px;
+                    left: 50%;
+                    transform: translateX(-50%);
+                    content: '';
+                    display: block;
+                    width: 0%;
+                    height: 3px;
+                    background: $theme-color;
+                    border-radius: 10px;
+                    transition: all .3s ease-in-out;
+                }
+
+                &:hover {
+                    color: rgb(199, 197, 197);
+                    transition: color .15s ease;
+
+                    &:before {
+                        width: 100%;
+                    }
+                }
+            }
         }
     }
 }

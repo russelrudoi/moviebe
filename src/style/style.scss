@@ -2,7 +2,7 @@
 @import './variables.scss';
 
 html {
-    background: #151A20;
+    background: $bg-color;
     font-family: 'Bebas Neue', cursive;
     font-style: normal;
     font-weight: 400;
@@ -13,4 +13,33 @@ html {
 .container {
     width: 1170px;
     margin: 0 auto;
+}
+
+.title {
+    font-family: 'Poppins', sans-serif;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 30px;
+    color: $main-color;
+    margin-top: 30px;
+    text-transform: uppercase;
+}
+
+.btn {
+    font-family: 'Bebas Neue', cursive;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 36px;
+    color: $main-color;
+
+    background: $theme-color;
+    border: none;
+    border-radius: 13px;
+    transition: background .15s linear;
+    cursor: pointer;
+
+    &:hover {
+        background: #ad0f19;
+        transition: background .15s linear;
+    }
 }
