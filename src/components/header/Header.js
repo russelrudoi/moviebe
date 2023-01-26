@@ -1,11 +1,10 @@
-import Logo from '../../resources/img/Logo.png';
-import Person from '../../resources/img/person.jpg';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 import classNames from 'classnames';
 
+import Logo from '../../resources/img/Logo.png';
 import './header.scss'
 import '../../style/style.scss'
-import { useState } from 'react';
 
 const Header = () => {
 
@@ -13,19 +12,15 @@ const Header = () => {
     const [hideNav, setHideNav] = useState(false);
 
     useEffect(() => {
-        const eventScroll = () => {
-            changeShowNav();
-        }
-
-        window.addEventListener('scroll', eventScroll)
+        document.addEventListener('scroll', scrollHandler)
 
         return () => {
-            window.removeEventListener('scroll', eventScroll)
+            document.removeEventListener('scroll', scrollHandler)
         }
     }, [])
 
 
-    function changeShowNav() {
+    function scrollHandler() {
 
         if (window.pageYOffset > 700) {
             setShowNav(true)
@@ -51,9 +46,9 @@ const Header = () => {
         <>
             <header className='header'>
                 <div className="container inner__wrapper">
-                    <a href="#" >
+                    <Link to="/" >
                         <img className='logo' src={Logo} alt="Logo" />
-                    </a>
+                    </Link>
                 </div>
             </header>
             <header className={`${headerClass}`}>
@@ -63,10 +58,18 @@ const Header = () => {
                     </a>
                     <nav className='header__nav'>
                         <ul className='header__nav__list'>
-                            <li>MOVIES</li>
-                            <li>SERIES</li>
-                            <li>IN THEATERS</li>
-                            <li>COMING SOON</li>
+                            <li>
+                                <Link to='/movies'>MOVIES</Link>
+                            </li>
+                            <li>
+                                <Link to='/series'>SERIES</Link>
+                            </li>
+                            <li>
+                                <Link to='/intheatre'>IN THEATRE</Link>
+                            </li>
+                            <li>
+                                <Link to='/comingsoon'>COMING SOON</Link>
+                            </li>
                         </ul>
                     </nav>
                 </div>

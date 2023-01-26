@@ -1,13 +1,13 @@
-import TemplateListItem from './templateListItem/TemplateListItem';
+import TemplateListItem from '../templateListItem/TemplateListItem';
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Keyboard, Navigation, Mousewheel } from "swiper";
 
 import "swiper/css";
-import './templateList.scss';
+import './templateListSwiper.scss';
 
-const TemplateList = ({data, title}) => {
+const TemplateListSwiper = ({data, title}) => {
 
-    const renderFilmList = (arr) => {
+    const renderTemplateList = (arr) => {
         if (arr.length === 0) {
             return <div>Error loading</div>
         }
@@ -22,7 +22,7 @@ const TemplateList = ({data, title}) => {
             }
         })
     }
-    const elements = renderFilmList(data)
+    const elements = renderTemplateList(data)
 
     return (
         <div>
@@ -50,4 +50,4 @@ const TemplateList = ({data, title}) => {
     )
 }
 
-export default TemplateList
+export default TemplateListSwiper

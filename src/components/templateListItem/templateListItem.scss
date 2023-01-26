@@ -1,4 +1,4 @@
-@import '../../../style/variables.scss';
+@import '../../style/variables.scss';
 
 .template {
     &__item {
@@ -7,6 +7,7 @@
         flex-direction: column;
         text-align: center;
         transition: all .3s ease;
+        width: 190px;
 
         &:hover {
             transform: scale(105%);

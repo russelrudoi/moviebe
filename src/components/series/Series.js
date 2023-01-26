@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux"
-import TemplateList from "../templateList/TemplateList"
+import TemplateListSwiper from "../templateListSwiper/TemplateListSwiper"
 import { fetchSeries } from "./seriesSlice";
 
 const Series = () => {
@@ -12,7 +12,7 @@ const Series = () => {
     }, [])
 
     return (
-        <TemplateList data={series} title={'Series'}/>
+        <TemplateListSwiper data={series} title={'Series'}/>
     )
 }
 

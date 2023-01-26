@@ -1,9 +1,7 @@
-import { useEffect } from 'react';
 import { useSelector } from 'react-redux';
-import imgMovie from '../../resources/img/337.png';
+import changeUrlImage from '../../utils/changeUrlImage';
 
 import '../../style/style.scss'
-import changeUrlImage from '../../utils/changeUrlImage';
 import './promo.scss'
 
 const Promo = () => {

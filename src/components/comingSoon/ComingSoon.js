@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux"
-import TemplateList from "../templateList/TemplateList"
+import TemplateListSwiper from "../templateListSwiper/TemplateListSwiper"
 import { fetchComingSoon } from "./comingSoonSlice";
 
 
@@ -13,7 +13,7 @@ const ComingSoon = () => {
     }, [])
 
 
-    return <TemplateList data={comingSoon} title={'Coming Soon'}/>
+    return <TemplateListSwiper data={comingSoon} title={'Coming Soon'}/>
 }
 
 export default ComingSoon

@@ -1,4 +1,4 @@
-import changeUrlImage from '../../../utils/changeUrlImage'
+import changeUrlImage from '../../utils/changeUrlImage'
 import './templateListItem.scss'
 
 const TemplateListItem = ({ title, year, image }) => {
