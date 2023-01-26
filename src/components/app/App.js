@@ -7,20 +7,22 @@ import {MainPage, MoviesPage} from '../pages'
 
 import '../../style/style-reset.css';
 import '../../style/style.scss';
+import ScrollToTop from '../../utils/scrollToTop';
 
 
 const App = () => {
   return (
     <Router>
       <div className="app">
-        <Header />
+        {/* <Header /> */}
+        <ScrollToTop/>
         <main>
           <Routes>
             <Route path='/' element={<MainPage/>}/>
             <Route path='/movies' element={<MoviesPage/>}/>
           </Routes>
         </main>
-        <Footer />
+        {/* <Footer /> */}
       </div>
     </Router>
   );

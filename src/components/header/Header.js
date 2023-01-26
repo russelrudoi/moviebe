@@ -53,9 +53,9 @@ const Header = () => {
             </header>
             <header className={`${headerClass}`}>
                 <div className="container inner__wrapper">
-                    <a href="#" >
+                    <Link to="/" >
                         <img className='logo' src={Logo} alt="Logo" />
-                    </a>
+                    </Link>
                     <nav className='header__nav'>
                         <ul className='header__nav__list'>
                             <li>
