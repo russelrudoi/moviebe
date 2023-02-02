@@ -1,0 +1,16 @@
+{
+  "files": {
+    "main.css": "/moviebe/static/css/main.28c4eff3.css",
+    "main.js": "/moviebe/static/js/main.7781ff8a.js",
+    "static/media/ex.jpg": "/moviebe/static/media/ex.84ce5ed2f72b37c9f76a.jpg",
+    "static/media/bgg.jpg": "/moviebe/static/media/bgg.36fcec47b0818d519a2f.jpg",
+    "static/media/Logo.png": "/moviebe/static/media/Logo.f0df15740a35166973ca.png",
+    "index.html": "/moviebe/index.html",
+    "main.28c4eff3.css.map": "/moviebe/static/css/main.28c4eff3.css.map",
+    "main.7781ff8a.js.map": "/moviebe/static/js/main.7781ff8a.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.28c4eff3.css",
+    "static/js/main.7781ff8a.js"
+  ]
+}
