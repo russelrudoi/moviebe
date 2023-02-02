@@ -1,42 +1,47 @@
+// html,
+// body {
+//     scrollbar-width: thin;
+//     scrollbar-color: transparent transparent;
+
+//     &::-webkit-scrollbar {
+//         width: 1px;
+//     }
+
+//     &::-webkit-scrollbar-track {
+//         background: transparent;
+//     }
+
+//     &::-webkit-scrollbar-thumb {
+//         background-color: transparent;
+//     }
+// }
+
+
 .template-page {
     margin-top: 50px;
+    // margin: 0 auto;
+    // margin-top: 30px;
 
-    &__wrapper {
-        display: flex;
-        justify-content: space-between;
-        flex-wrap: wrap;
-        margin-top: 30px;
-        row-gap: 25px;
+}
+
+.no-scrollbars {
+    scrollbar-width: thin;
+    scrollbar-color: transparent transparent;
+
+    &::-webkit-scrollbar {
+        width: 1px;
+    }
+
+    &::-webkit-scrollbar-track {
+        background: transparent;
+    }
+
+    &::-webkit-scrollbar-thumb {
+        background-color: transparent;
     }
 }
 
-html {
-    font-family: sans-serif;
-    font-size: 12px;
-}
-
-body {
-    margin: 0;
-}
-
-html,
-body,
-#root {
-    height: 100%;
-    overflow-x: hidden;
-}
-
-.List {
-    border: 1px solid #d9dddd;
-}
-
-.ListItemEven,
-.ListItemOdd {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.ListItemEven {
-    background-color: #f8f8f0;
+.no-scrollbars::-webkit-scrollbar {
+    display: none;
+    /* Safari and Chrome */
 }

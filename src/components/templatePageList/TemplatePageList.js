@@ -1,85 +1,79 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import TemplateListItem from "../templateListItem/TemplateListItem";
-import { FixedSizeList as List } from "react-window";
+import { FixedSizeGrid as Grid } from "react-window";
 import AutoSizer from "react-virtualized-auto-sizer";
 import InfiniteLoader from "react-window-infinite-loader";
+import { ReactWindowScroller as WindowScroller } from "react-window-scroller/dist/index.jsx";
 
 import './templatePageList.scss';
 
-// const TemplatePageList = ({ data, title }) => {
-//     const [offset, setOffset] = useState(30)
+const TemplatePageList = ({ data, title }) => {
+    const separationArray = (arr) => {
+        const separatedArray = [];
+        let countStart = 0;
+        let countEnd = 6;
 
-//     useEffect(() => {
-//         document.addEventListener('scroll', scrollHandler)
+        while (countStart <= arr.length) {
+            const partArray = arr.slice(countStart, countEnd)
+            separatedArray.push(partArray)
+            countStart += 6
+            countEnd += 6
+        }
 
-//         return () => {
-//             document.removeEventListener('scroll', scrollHandler)
-//         }
-//     })
+        return separatedArray;
+    }
 
-//     const scrollHandler = (e) => {
-//         const heigthDocument = e.target.documentElement.scrollHeight
-//         if (heigthDocument - (e.target.documentElement.scrollTop + window.innerHeight) < heigthDocument * 0.3) {
-//             setOffset(offset => offset + 18)
-//         }
-//     }
-//     const renderTemplatePageList = (arr) => {
-//         if (arr.length === 0) {
-//             return <div>Error loading</div>
-//         }
+    const items = separationArray(data)
 
-//         return arr.map(({ id, ...props }, index, style) => {
-//             if (index <= offset) {
-//                 return (
-//                     <div className="template__item" key={id}>
-//                         <Link to='/'>
-//                             <TemplateListItem {...props} />
-//                         </Link>
-//                     </div>
-//                 )
-//             }
-//         })
-//     }
+    const Cell = ({ columnIndex, rowIndex, style, data }) => {
+        const { id, ...props } = data[rowIndex][columnIndex];
 
-//     const elements = renderTemplatePageList(data)
+        if (data.length === 1) {
+            return <div>Error loading</div>
+        }
 
-//     return (
-// <div className="template-page">
-//     <div className="container">
-//         <h2 className="title">{title}</h2>
-//         <div className="template-page__wrapper">
-//             {elements}
-//         </div>
-//     </div>
-// </div>
-//     )
-// }
+        return (
+            <div style={{ ...style }} key={id}>
+                <div className="template__item">
+                    <Link to='/'>
+                        <TemplateListItem {...props} />
+                    </Link>
+                </div>
+            </div>
+        )
+    };
 
-// export default TemplatePageList;
+    return (
+        <div className="container">
+            <div className="template-page">
+                <WindowScroller isGrid>
+                    {({ ref, outerRef, style, onScroll }) => (
+                        <AutoSizer disableHeight>
+                            {({ width }) => (
+                                <Grid
+                                    className="no-scrollbars"
+                                    ref={ref}
+                                    outerRef={outerRef}
+                                    style={style}
+                                    onScroll={onScroll}
+                                    itemData={items}
+                                    columnCount={6}
+                                    columnWidth={190}
+                                    height={window.innerHeight}
+                                    rowCount={41}
+                                    rowHeight={340}
+                                    width={width}
+                                >
+                                    {Cell}
+                                </Grid>
+                            )}
+                        </AutoSizer>
+                    )}
+                </WindowScroller>
+            </div>
+        </div >
+    )
+}
 
-const Row = ({ index, style }) => (
-    <div className={index % 2 ? "ListItemOdd" : "ListItemEven"} style={style}>
-        Row {index}
-    </div>
-);
-
-const Example = () => (
-    <div style={{ height: '100vh' }}>
-            <AutoSizer>
-                {({ height, width }) => (
-                    <List
-                        className="List"
-                        height={height}
-                        itemCount={1000}
-                        itemSize={35}
-                        width={width}
-                    >
-                        {Row}
-                    </List>
-                )}
-            </AutoSizer>
-        </div>
-);
-
-export default Example
+export default TemplatePageList;

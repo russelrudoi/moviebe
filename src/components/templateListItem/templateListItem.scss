@@ -6,23 +6,18 @@
         justify-content: start;
         flex-direction: column;
         text-align: center;
-        transition: all .3s ease;
         width: 190px;
 
         &:hover {
-            transform: scale(105%);
-            transition: all .3s ease;
-
             .template__image {
-                border: 2px solid $theme-color;
-                transition: border .2s ease;
+                transform: scale(105%);
+                transition: all .3s linear;
             }
+        }
 
-            .template__title,
-            .template__year {
-                color: $theme-color;
-                transition: color .3s ease;
-            }
+        a {
+            text-decoration: none;
+            color: inherit;
         }
     }
 
@@ -33,19 +28,17 @@
         object-fit: cover;
         border: 0px solid $theme-color;
         border-radius: 10px;
-        transition: border .2s ease;
+        transition: all .3s linear;
     }
 
     &__title {
         margin-top: 10px;
         font-size: 1.28rem;
         font-weight: 300;
-        transition: color .3s ease;
     }
 
     &__year {
         margin-top: 5px;
         font-size: 1.14rem;
-        transition: color .3s ease;
     }
 }

@@ -8,9 +8,9 @@ const TemplateListItem = ({ title, year, image }) => {
 
     return (
         <>
-            <img src={img} alt="" className='template__image' />
-            <h2 className="template__title">Matrica</h2>
-            <div className="template__year">(2021)</div>
+            <img src={changedImage} alt="" className='template__image' />
+            <h2 className="template__title">{title}</h2>
+            <div className="template__year">({year})</div>
         </>
     )
 }
