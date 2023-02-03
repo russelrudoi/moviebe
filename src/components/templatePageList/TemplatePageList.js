@@ -1,79 +1,94 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import ReactPaginate from "react-paginate";
 import TemplateListItem from "../templateListItem/TemplateListItem";
-import { FixedSizeGrid as Grid } from "react-window";
-import AutoSizer from "react-virtualized-auto-sizer";
-import InfiniteLoader from "react-window-infinite-loader";
-import { ReactWindowScroller as WindowScroller } from "react-window-scroller/dist/index.jsx";
+import Spinner from "../spinner/Spinner";
 
 import './templatePageList.scss';
 
-const TemplatePageList = ({ data, title }) => {
-    const separationArray = (arr) => {
-        const separatedArray = [];
-        let countStart = 0;
-        let countEnd = 6;
+const Items = ({ currentItems }) => {
 
-        while (countStart <= arr.length) {
-            const partArray = arr.slice(countStart, countEnd)
-            separatedArray.push(partArray)
-            countStart += 6
-            countEnd += 6
+    const renderItems = (arr) => {
+        if (arr.length === 0) {
+            return <div className="spinner">
+                <Spinner />
+            </div>
         }
 
-        return separatedArray;
+        return arr.map(({ id, ...props }, index) => {
+            if (index <= 50) {
+                return (
+                    <div className="template__item" key={id}>
+                        <TemplateListItem {...props} />
+                    </div>
+                )
+            }
+        })
     }
 
-    const items = separationArray(data)
+    const elements = renderItems(currentItems)
 
-    const Cell = ({ columnIndex, rowIndex, style, data }) => {
-        const { id, ...props } = data[rowIndex][columnIndex];
+    return (
+        <div className="template-page__wrapper">
+            {elements}
+        </div>
+    )
+}
 
-        if (data.length === 1) {
-            return <div>Error loading</div>
-        }
+const TemplatePageList = ({ items}) => {
 
-        return (
-            <div style={{ ...style }} key={id}>
-                <div className="template__item">
-                    <Link to='/'>
-                        <TemplateListItem {...props} />
-                    </Link>
-                </div>
-            </div>
-        )
+    const [currentItems, setCurrentItems] = useState([]);
+    const [pageCount, setPageCount] = useState(0);
+    const [itemOffset, setItemOffset] = useState(0);
+
+    const itemsPerPage = 48
+
+    useEffect(() => {
+        const endOffset = itemOffset + itemsPerPage;
+        console.log(`Loading items from ${itemOffset} to ${endOffset}`);
+        setCurrentItems(items.slice(itemOffset, endOffset));
+        setPageCount(Math.ceil(items.length / itemsPerPage));
+        window.scrollTo(0, 0);
+    }, [itemOffset, itemsPerPage]);
+
+    const handlePageClick = (event) => {
+        const newOffset = event.selected * itemsPerPage % items.length;
+        console.log(`User requested page number ${event.selected}, which is offset ${newOffset}`);
+        setItemOffset(newOffset);
     };
 
     return (
-        <div className="container">
+        <>
             <div className="template-page">
-                <WindowScroller isGrid>
-                    {({ ref, outerRef, style, onScroll }) => (
-                        <AutoSizer disableHeight>
-                            {({ width }) => (
-                                <Grid
-                                    className="no-scrollbars"
-                                    ref={ref}
-                                    outerRef={outerRef}
-                                    style={style}
-                                    onScroll={onScroll}
-                                    itemData={items}
-                                    columnCount={6}
-                                    columnWidth={190}
-                                    height={window.innerHeight}
-                                    rowCount={41}
-                                    rowHeight={340}
-                                    width={width}
-                                >
-                                    {Cell}
-                                </Grid>
-                            )}
-                        </AutoSizer>
-                    )}
-                </WindowScroller>
+                <div className="container">
+                    <Items currentItems={currentItems} />
+                    <div className="template-page__pagination-wrapper">
+                        <ReactPaginate
+                            nextLabel=">"
+                            onPageChange={handlePageClick}
+                            pageRangeDisplayed={3}
+                            marginPagesDisplayed={2}
+                            pageCount={pageCount}
+                            previousLabel="<"
+                            pageClassName="page-item"
+                            pageLinkClassName="page-link"
+                            previousClassName="page-item"
+                            previousLinkClassName="page-link"
+                            nextClassName="page-item"
+                            nextLinkClassName="page-link"
+                            breakLabel="..."
+                            breakClassName="page-item"
+                            breakLinkClassName="page-link"
+                            containerClassName="pagination"
+                            activeClassName="page-item_active"
+                            renderOnZeroPageCount={null}
+                        />
+                    </div>
+                </div>
             </div>
-        </div >
-    )
+        </>
+    );
+
 }
 
 export default TemplatePageList;

@@ -1,44 +1,40 @@
-// html,
-// body {
-//     scrollbar-width: thin;
-//     scrollbar-color: transparent transparent;
-
-//     &::-webkit-scrollbar {
-//         width: 1px;
-//     }
-
-//     &::-webkit-scrollbar-track {
-//         background: transparent;
-//     }
-
-//     &::-webkit-scrollbar-thumb {
-//         background-color: transparent;
-//     }
-// }
-
+@import '../../style/variables.scss';
 
 .template-page {
-    margin-top: 50px;
-}
+    margin-top: 80px;
 
-.no-scrollbars {
-    scrollbar-width: thin;
-    scrollbar-color: transparent transparent;
-
-    &::-webkit-scrollbar {
-        width: 1px;
+    &__wrapper {
+        display: flex;
+        justify-content: center;
+        column-gap: 5px;
+        row-gap: 50px;
+        flex-wrap: wrap;
     }
 
-    &::-webkit-scrollbar-track {
-        background: transparent;
+    &__pagination-wrapper {
+        margin-top: 50px;
+        display: flex;
+        justify-content: center;
     }
 
-    &::-webkit-scrollbar-thumb {
-        background-color: transparent;
-    }
-}
+    .pagination {
+        display: flex;
+        font-size: 2rem;
+        column-gap: 15px;
 
-.no-scrollbars::-webkit-scrollbar {
-    display: none;
-    /* Safari and Chrome */
+        .page-item {
+            transition: opacity .15s ease-in;
+            cursor: pointer;
+
+            &_active {
+                color: $theme-color;
+            }
+
+            &:hover {
+                opacity: 0.5;
+                color: $main-color;
+                transition: opacity .15s ease-out;
+            }
+        }
+    }
 }

@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, NavLink, useLocation } from 'react-router-dom';
 import classNames from 'classnames';
 
 import Logo from '../../resources/img/Logo.png';
@@ -10,6 +10,7 @@ const Header = () => {
 
     const [showNav, setShowNav] = useState(false);
     const [hideNav, setHideNav] = useState(false);
+    const { pathname } = useLocation();
 
     useEffect(() => {
         document.addEventListener('scroll', scrollHandler)
@@ -19,6 +20,11 @@ const Header = () => {
         }
     }, [])
 
+    if (pathname !== '/moviebe/') {
+        return (
+            <HeaderPopDown headerClass={'header header-fixed'}/>
+        )
+    }
 
     function scrollHandler() {
 
@@ -46,35 +52,57 @@ const Header = () => {
         <>
             <header className='header'>
                 <div className="container inner__wrapper">
-                    <Link to="/" >
-                        <img className='logo' src={Logo} alt="Logo" />
-                    </Link>
-                </div>
-            </header>
-            <header className={`${headerClass}`}>
-                <div className="container inner__wrapper">
-                    <Link to="/" >
+                    <Link to="/moviebe/" >
                         <img className='logo' src={Logo} alt="Logo" />
                     </Link>
                     <nav className='header__nav'>
                         <ul className='header__nav__list'>
                             <li>
-                                <Link to='/movies'>MOVIES</Link>
+                                <Link to='/moviebe/movies'>MOVIES</Link>
                             </li>
                             <li>
-                                <Link to='/series'>SERIES</Link>
+                                <Link to='/moviebe/series'>SERIES</Link>
                             </li>
                             <li>
-                                <Link to='/intheatre'>IN THEATRE</Link>
+                                <Link to='/moviebe/intheatre'>IN THEATRE</Link>
                             </li>
                             <li>
-                                <Link to='/comingsoon'>COMING SOON</Link>
+                                <Link to='/moviebe/comingsoon'>COMING SOON</Link>
                             </li>
                         </ul>
                     </nav>
                 </div>
             </header>
+            <HeaderPopDown headerClass={headerClass}/>
         </>
+    )
+}
+
+const HeaderPopDown = ({headerClass}) => {
+    return (
+        <header className={`${headerClass}`}>
+            <div className="container inner__wrapper">
+                <Link to="/moviebe/" >
+                    <img className='logo' src={Logo} alt="Logo" />
+                </Link>
+                <nav className='header__nav'>
+                    <ul className='header__nav__list'>
+                        <li>
+                            <NavLink to='/moviebe/movies'>MOVIES</NavLink>
+                        </li>
+                        <li>
+                            <NavLink to='/moviebe/series'>SERIES</NavLink>
+                        </li>
+                        <li>
+                            <NavLink to='/moviebe/intheatre'>IN THEATRE</NavLink>
+                        </li>
+                        <li>
+                            <NavLink to='/moviebe/comingsoon'>COMING SOON</NavLink>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </header>
     )
 }
 

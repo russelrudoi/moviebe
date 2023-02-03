@@ -21,7 +21,7 @@ const MoviesPage = () => {
         )
     }
 
-    return <TemplatePageList data={movies} title={'Movies'} />
+    return <TemplatePageList items={movies} title={'Movies'} />
 }
 
 export default MoviesPage;
