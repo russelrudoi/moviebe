@@ -1,4 +1,4 @@
-import Logo from '../../resources/img/Logo.png';
+import Logo from '../../resources/img/icon/Logo.png';
 
 import './footer.scss'
 

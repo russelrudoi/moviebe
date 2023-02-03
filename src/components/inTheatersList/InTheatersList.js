@@ -3,18 +3,30 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import InTheatersListItem from './inTheatersListItem/InTheatersListItem';
 import { fetchInTheaters } from './inTheatersSlice';
+import Spinner from "../spinner/Spinner";
+
 
 import '../../style/style.scss';
 import './inTheatersList.scss';
 
 const InTheatersList = () => {
-    const { inTheaters} = useSelector(state => state.inTheaters)
-    const dispatch = useDispatch();    
+    const { inTheaters, inTheatersLoadingStatus } = useSelector(state => state.inTheaters)
+    const dispatch = useDispatch();
 
     useEffect(() => {
         dispatch(fetchInTheaters());
     }, [])
 
+    if (inTheatersLoadingStatus === 'loading') {
+        <div className="in-theaters">
+            <div className="container">
+                <h2 className="title">In theaters</h2>
+                <div className="spinner">
+                    <Spinner/>
+                </div>
+            </div>
+        </div>
+    }
 
     const renderList = (arr) => {
         return arr.map(({ id, ...props }, index) => {
@@ -29,7 +41,7 @@ const InTheatersList = () => {
             }
         })
     }
-    
+
     const elements = renderList(inTheaters)
 
     return (

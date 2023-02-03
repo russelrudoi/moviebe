@@ -9,9 +9,9 @@
         width: 190px;
 
         &:hover {
-            .template__image {
+            .template__image img {
                 transform: scale(105%);
-                transition: all .3s linear;
+                transition: all .2s linear;
             }
         }
 
@@ -22,13 +22,23 @@
     }
 
     &__image {
+        display: flex;
+        justify-content: center;
+        align-items: center;
         position: relative;
-        margin: 0 auto;
         height: 255px;
-        object-fit: cover;
-        border: 0px solid $theme-color;
-        border-radius: 10px;
-        transition: all .3s linear;
+
+        &_loading {
+            display: none;
+        }
+
+        img {
+            margin: 0 auto;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 10px;
+            transition: all .15s linear;
+        }
     }
 
     &__title {

@@ -1,14 +1,32 @@
+import { useState } from 'react'
 import changeUrlImage from '../../utils/changeUrlImage'
-import './templateListItem.scss'
+import Spinner from "../spinner/Spinner";
 
-import img from '../../resources/img/ex.jpg'
+import './templateListItem.scss'
+import classNames from 'classnames';
 
 const TemplateListItem = ({ title, year, image }) => {
+    const [imageLoaded, setImageLoaded] = useState(false)
     const changedImage = changeUrlImage(image)
+
+    const handleImageLoaded = () => {
+        setImageLoaded(true)
+    };
+
+    const imageClass = classNames({
+        'template__image_loading': !imageLoaded
+    })
 
     return (
         <>
-            <img src={changedImage} alt="" className='template__image' />
+            <div className='template__image'>
+                <img className={`${imageClass}`} src={changedImage} alt="movies" onLoad={handleImageLoaded} />
+                {
+                    !imageLoaded
+                        ? <Spinner />
+                        : null
+                }
+            </div>
             <h2 className="template__title">{title}</h2>
             <div className="template__year">({year})</div>
         </>

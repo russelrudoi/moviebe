@@ -35,7 +35,7 @@
             transform: translateY(-50%);
             width: 20px;
             height: 16px;
-            background: url('../../resources/img/4k.png') no-repeat center/cover;
+            background: url('../../resources/img/icon/4k.png') no-repeat center/cover;
         }
     }
 
@@ -60,9 +60,10 @@
 
     &__img {
         position: relative;
+        height: 540px;
 
         img {
-            height: 540px;
+            height: 100%;
             object-fit: cover;
             border-radius: 10px;
         }

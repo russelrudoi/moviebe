@@ -43,3 +43,21 @@ html {
         transition: background .15s linear;
     }
 }
+
+.error {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    font-size: 3rem;
+}
+
+.spinner {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+    &-page {
+        height: calc(100vh + 150px);
+    }
+}

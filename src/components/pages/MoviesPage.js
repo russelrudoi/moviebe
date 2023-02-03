@@ -12,10 +12,10 @@ const MoviesPage = () => {
     useEffect(() => {
         dispatch(fetchMovies());
     }, [])
-
+    
     if (moviesLoadingStatus === 'loading') {
         return (
-            <div className="spinner">
+            <div className="spinner-page">
                 <Spinner />
             </div>
         )

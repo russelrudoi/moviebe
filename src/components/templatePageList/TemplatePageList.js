@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
 import ReactPaginate from "react-paginate";
 import TemplateListItem from "../templateListItem/TemplateListItem";
 import Spinner from "../spinner/Spinner";
@@ -10,7 +9,7 @@ const Items = ({ currentItems }) => {
 
     const renderItems = (arr) => {
         if (arr.length === 0) {
-            return <div className="spinner">
+            return <div className="spinner-page">
                 <Spinner />
             </div>
         }

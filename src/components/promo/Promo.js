@@ -1,20 +1,40 @@
 import { useSelector } from 'react-redux';
 import changeUrlImage from '../../utils/changeUrlImage';
 
-import '../../style/style.scss'
+import Spinner from "../spinner/Spinner";
+import ErrorIcon from '../../resources/img/icon/error.png';
+
 import './promo.scss'
 
 const Promo = () => {
-
     const { inTheaters: promo, inTheatersLoadingStatus: promoLoadingStatus } = useSelector(state => state.inTheaters);
+
+    if (promoLoadingStatus === 'loading') {
+        return (
+            <div className="promo">
+                <div className="spinner">
+                    <Spinner />
+                </div>
+                <div className="promo__bg"></div>
+            </div>
+        )
+    }
+
+    if (promoLoadingStatus === 'error') {
+        return (
+            <div className="promo">
+                <div className="error">
+                    <img src={ErrorIcon} alt="" />
+                    Error
+                </div>
+                <div className="promo__bg"></div>
+            </div>
+        )
+    }
 
     const renderPromo = (arr) => {
         const random = (min, max) => {
             return Math.floor(Math.random() * (max - min + 1)) + min;
-        }
-
-        if (arr.length === 0) {
-            return <div>Loading</div>
         }
 
         if (arr.length) {
@@ -39,17 +59,12 @@ const Promo = () => {
                         <button className="btn promo__btn">more details</button>
                     </div>
                     <div className="promo__img">
-                        <img src={changeUrlImage(image)}></img>
+                        <img src={changeUrlImage(image)} alt="movies" />
                     </div>
                 </div>
             )
         }
     }
-
-
-
-    // const { title, fullTitle, plot, imDbRating, metacriticRating } = promo[random(3, promo.length)]
-    console.log(promoLoadingStatus)
 
     const element = renderPromo(promo)
 

@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { Link, NavLink, useLocation } from 'react-router-dom';
 import classNames from 'classnames';
 
-import Logo from '../../resources/img/Logo.png';
+import Logo from '../../resources/img/icon/Logo.png';
 import './header.scss'
 import '../../style/style.scss'
 
