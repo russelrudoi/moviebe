@@ -18,9 +18,7 @@ const Promo = () => {
                 <div className="promo__bg"></div>
             </div>
         )
-    }
-
-    if (promoLoadingStatus === 'error') {
+    } else if (promoLoadingStatus === 'error') {
         return (
             <div className="promo">
                 <div className="error">

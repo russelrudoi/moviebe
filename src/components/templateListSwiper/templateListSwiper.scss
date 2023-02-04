@@ -1,7 +1,16 @@
 @import '../../style/variables.scss';
 
-.template {
+.template-swiper {
     margin-top: 75px;
+
+    .title {
+        a {
+            margin-left: 10px;
+            font-size: 1.1rem;
+            text-decoration: none;
+            color: $theme-color;
+        }
+    }
 
     .swiper {
         padding-top: 46px;

@@ -1,5 +1,5 @@
 import { configureStore} from '@reduxjs/toolkit';
-import inTheaters from "../components/inTheatersList/inTheatersSlice";
+import inTheaters from "../components/inTheaters/inTheatersSlice";
 import comingSoon from '../components/comingSoon/comingSoonSlice';
 import movies from "../components/movies/moviesSlice";
 import series from "../components/series/seriesSlice";

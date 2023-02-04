@@ -1,9 +1,9 @@
-import { useState } from 'react'
+import { useState } from 'react';
+import classNames from 'classnames';
 import changeUrlImage from '../../utils/changeUrlImage'
 import Spinner from "../spinner/Spinner";
 
 import './templateListItem.scss'
-import classNames from 'classnames';
 
 const TemplateListItem = ({ title, year, image }) => {
     const [imageLoaded, setImageLoaded] = useState(false)

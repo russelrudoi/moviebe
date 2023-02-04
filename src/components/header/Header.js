@@ -64,7 +64,7 @@ const Header = () => {
                                 <Link to='/moviebe/series'>SERIES</Link>
                             </li>
                             <li>
-                                <Link to='/moviebe/intheatre'>IN THEATRE</Link>
+                                <Link to='/moviebe/intheaters'>IN THEATERS</Link>
                             </li>
                             <li>
                                 <Link to='/moviebe/comingsoon'>COMING SOON</Link>
@@ -94,7 +94,7 @@ const HeaderPopDown = ({headerClass}) => {
                             <NavLink to='/moviebe/series'>SERIES</NavLink>
                         </li>
                         <li>
-                            <NavLink to='/moviebe/intheatre'>IN THEATRE</NavLink>
+                            <NavLink to='/moviebe/intheaters'>IN THEATERS</NavLink>
                         </li>
                         <li>
                             <NavLink to='/moviebe/comingsoon'>COMING SOON</NavLink>

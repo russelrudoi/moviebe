@@ -1,22 +1,32 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { useLocation } from 'react-router-dom';
 import TemplateListSwiper from '../templateListSwiper/TemplateListSwiper';
+import TemplatePageList from '../templatePageList/TemplatePageList';
 
 import { fetchMovies } from './moviesSlice';
 
 const Movies = () => {
-    const { movies } = useSelector(state => state.movies)
+    const { pathname } = useLocation()
+    const { movies, moviesLoadingStatus } = useSelector(state => state.movies)
     const dispatch = useDispatch();
 
     useEffect(() => {
         dispatch(fetchMovies());
     }, [])
 
-    return (
-        <>
-            <TemplateListSwiper data={movies} title={'Movies'}/>
-        </>
-    )
+    if (pathname === '/moviebe/') {
+        return <TemplateListSwiper
+            data={movies}
+            title={'Movies'}
+            loadingStatus={moviesLoadingStatus}
+            linkPage={'/moviebe/movies'} />
+
+    }
+
+    if (pathname === '/moviebe/movies') {
+        return <TemplatePageList items={movies} loadingStatus={moviesLoadingStatus} />
+    }
 }
 
 export default Movies;

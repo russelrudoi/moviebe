@@ -1,9 +1,21 @@
+import { useState } from 'react';
 import classNames from "classnames";
 import changeUrlImage from "../../../utils/changeUrlImage";
+import Spinner from "../../spinner/Spinner";
 
 import './inTheatersListItem.scss'
 
 const InTheatersListItem = ({ title, year, plot, image, imDbRating, metacriticRating, index }) => {
+    const [imageLoaded, setImageLoaded] = useState(false);
+
+    const handleImageLoaded = () => {
+        setImageLoaded(true)
+    };
+
+    const imageClass = classNames({
+        'in-theaters__image_loading': !imageLoaded
+    })
+
     const itemSizeClass = classNames(
         'in-theaters__item',
         { 'in-theaters__big': index === 0 },
@@ -15,7 +27,16 @@ const InTheatersListItem = ({ title, year, plot, image, imDbRating, metacriticRa
 
     return (
         <div className={itemSizeClass}>
-            <img src={changedImage} alt="" />
+            <img
+                className={`${imageClass}`}
+                src={changedImage}
+                alt="in theaters"
+                onLoad={handleImageLoaded} />
+            {
+                !imageLoaded
+                    ? <Spinner />
+                    : null
+            }
             <div className="in-theaters__info">
                 <h2 className="in-theaters__title">{title}</h2>
                 <div className="in-theaters__year">{year}</div>
@@ -33,7 +54,7 @@ const InTheatersListItem = ({ title, year, plot, image, imDbRating, metacriticRa
                 watch
             </button>
         </div>
-        
+
     )
 }
 

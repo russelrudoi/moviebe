@@ -1,31 +1,36 @@
-import { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-
+import { Link } from 'react-router-dom';
 import InTheatersListItem from './inTheatersListItem/InTheatersListItem';
-import { fetchInTheaters } from './inTheatersSlice';
 import Spinner from "../spinner/Spinner";
-
+import ErrorIcon from '../../resources/img/icon/error.png';
 
 import '../../style/style.scss';
 import './inTheatersList.scss';
 
-const InTheatersList = () => {
-    const { inTheaters, inTheatersLoadingStatus } = useSelector(state => state.inTheaters)
-    const dispatch = useDispatch();
-
-    useEffect(() => {
-        dispatch(fetchInTheaters());
-    }, [])
+const InTheatersList = ({inTheaters, inTheatersLoadingStatus}) => {
 
     if (inTheatersLoadingStatus === 'loading') {
-        <div className="in-theaters">
-            <div className="container">
-                <h2 className="title">In theaters</h2>
-                <div className="spinner">
-                    <Spinner/>
+        return (
+            <div className="in-theaters">
+                <div className="container">
+                    <h2 className="title">In theaters</h2>
+                    <div className="spinner">
+                        <Spinner />
+                    </div>
                 </div>
             </div>
-        </div>
+        )
+    } else if (inTheatersLoadingStatus === 'error') {
+        return (
+            <div className="in-theaters">
+                <div className="container">
+                    <h2 className="title">In theaters</h2>
+                    <div className="error">
+                        <img src={ErrorIcon} alt="" />
+                        Error
+                    </div>
+                </div>
+            </div>
+        )
     }
 
     const renderList = (arr) => {
@@ -47,7 +52,7 @@ const InTheatersList = () => {
     return (
         <div className="in-theaters">
             <div className="container">
-                <h2 className="title">In theaters</h2>
+                <h2 className="title">In theaters <Link to='/moviebe/intheatre'>see more...</Link></h2>
                 <div className="in-theaters__wrapper">
                     {elements}
                     <button className="btn in-theaters__btn-link">see more</button>
