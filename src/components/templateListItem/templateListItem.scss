@@ -9,8 +9,23 @@
         width: 190px;
 
         &:hover {
-            .template__image img {
-                transform: scale(105%);
+            .template__image {
+
+                &__btn {
+                    top: 50%;
+                    opacity: 1;
+                    transition: all .2s linear;
+                }
+
+                img {
+                    transform: scale(103%);
+                    opacity: .3;
+                    transition: all .2s linear;
+                }
+            }
+
+            .template__title {
+                color: #b6131e;
                 transition: all .2s linear;
             }
         }
@@ -27,6 +42,7 @@
         align-items: center;
         position: relative;
         height: 255px;
+        cursor: pointer;
 
         &_loading {
             display: none;
@@ -39,16 +55,36 @@
             border-radius: 10px;
             transition: all .15s linear;
         }
+
+        &__btn {
+            opacity: 0;
+            width: 120px;
+            height: 40px;
+            position: absolute;
+            top: 55%;
+            left: 50%;
+            transition: all .15s linear;
+            transform: translate(-50%, -50%);
+            font-size: 1.5rem;
+            color: inherit;
+            background: $theme-color;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
     }
 
     &__title {
+        cursor: pointer;
         margin-top: 10px;
-        font-size: 1.28rem;
+        font-size: 1.45rem;
         font-weight: 300;
+        transition: all .2s linear;
     }
 
     &__year {
+        color: #989898;
         margin-top: 5px;
-        font-size: 1.14rem;
+        font-size: 1.2rem;
     }
 }

@@ -21,12 +21,15 @@ const TemplateListItem = ({ title, year, image }) => {
         <>
             <div className='template__image'>
                 <img className={`${imageClass}`} src={changedImage} alt="movies" onLoad={handleImageLoaded} />
+                <button className='template__image__btn'>watch</button>
                 {
                     !imageLoaded
                         ? <Spinner />
                         : null
                 }
+                <div className={`template__image_overlay ${imageClass}`}></div>
             </div>
+
             <h2 className="template__title">{title}</h2>
             <div className="template__year">({year})</div>
         </>
