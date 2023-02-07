@@ -12,7 +12,7 @@ const Items = ({ currentItems }) => {
             if (index <= 50) {
                 return (
                     <div className="template__item" key={id}>
-                        <TemplateListItem {...props} />
+                        <TemplateListItem {...props} id={id}/>
                     </div>
                 )
             }

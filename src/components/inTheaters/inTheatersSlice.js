@@ -10,7 +10,7 @@ export const fetchInTheaters = createAsyncThunk(
     'inTheaters/fetchInTheaters',
     async () => {
         const { request } = useHttp();
-        return await request('https://imdb-api.com/en/API/InTheaters/k_dhsgy58w')
+        return await request('https://imdb-api.com/en/API/InTheaters/k_dkokc24s')
     }
 )
 

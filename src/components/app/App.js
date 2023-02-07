@@ -14,6 +14,8 @@ const MoviesPage = lazy(() => import("../pages/MoviesPage"));
 const SeriesPage = lazy(() => import("../pages/SeriesPage"));
 const InTheatersPage = lazy(() => import("../pages/InTheatersPage"));
 const ComingSoonPage = lazy(() => import("../pages/ComingSoonPage"));
+// const SingleItemLayout = lazy(() => import("../singleItemLayout/SingleItemLayout"));
+const SinglePage = lazy(() => import("../pages/SinglePage"));
 
 const App = () => {
   return (
@@ -29,6 +31,7 @@ const App = () => {
               <Route path='/moviebe/series' element={<SeriesPage />} />
               <Route path='/moviebe/intheaters' element={<InTheatersPage />} />
               <Route path='/moviebe/comingsoon' element={<ComingSoonPage />} />
+              <Route path='/moviebe/:id' element={<SinglePage />} />
             </Routes>
           </Suspense>
         </main>

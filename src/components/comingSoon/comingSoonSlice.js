@@ -10,7 +10,7 @@ export const fetchComingSoon = createAsyncThunk(
     'comingSoon/fetchComingSoon',
     async () => {
         const { request } = useHttp();
-        return await request('https://imdb-api.com/en/API/ComingSoon/k_dhsgy58w')
+        return await request('https://imdb-api.com/en/API/ComingSoon/k_dkokc24s')
     }
 )
 

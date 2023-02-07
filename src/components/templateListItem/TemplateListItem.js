@@ -4,8 +4,9 @@ import changeUrlImage from '../../utils/changeUrlImage'
 import Spinner from "../spinner/Spinner";
 
 import './templateListItem.scss'
+import { Link } from 'react-router-dom';
 
-const TemplateListItem = ({ title, year, image }) => {
+const TemplateListItem = ({ title, year, image, id }) => {
     const [imageLoaded, setImageLoaded] = useState(false)
     const changedImage = changeUrlImage(image)
 
@@ -17,8 +18,12 @@ const TemplateListItem = ({ title, year, image }) => {
         'template__image_loading': !imageLoaded
     })
 
+    const handleClick = () => {
+        console.log(title, year, id)
+    }
+
     return (
-        <>
+        <Link to={`/moviebe/${id}`} onClick={handleClick}>
             <div className='template__image'>
                 <img className={`${imageClass}`} src={changedImage} alt="movies" onLoad={handleImageLoaded} />
                 <button className='template__image__btn'>watch</button>
@@ -32,7 +37,7 @@ const TemplateListItem = ({ title, year, image }) => {
 
             <h2 className="template__title">{title}</h2>
             <div className="template__year">({year})</div>
-        </>
+        </Link>
     )
 }
 

@@ -43,7 +43,7 @@ const TemplateListSwiper = ({ data, title, loadingStatus, linkPage }) => {
             if (index <= 30) {
                 return (
                     <SwiperSlide className="template__item" key={id}>
-                        <TemplateListItem {...props} />
+                        <TemplateListItem {...props} id={id}/>
                     </SwiperSlide>
                 )
             }
