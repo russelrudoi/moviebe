@@ -8,7 +8,7 @@ import ErrorIcon from '../../resources/img/icon/error.png';
 import "swiper/css";
 import './templateListSwiper.scss';
 
-const TemplateListSwiper = ({ data, title, loadingStatus, linkPage }) => {
+const TemplateListSwiper = ({ data, title, loadingStatus, linkPage, withoutLink }) => {
 
     if (loadingStatus === 'loading') {
         return (
@@ -43,7 +43,7 @@ const TemplateListSwiper = ({ data, title, loadingStatus, linkPage }) => {
             if (index <= 30) {
                 return (
                     <SwiperSlide className="template__item" key={id}>
-                        <TemplateListItem {...props} id={id}/>
+                        <TemplateListItem {...props} id={id} />
                     </SwiperSlide>
                 )
             }
@@ -55,9 +55,15 @@ const TemplateListSwiper = ({ data, title, loadingStatus, linkPage }) => {
     return (
         <div className="template-swiper">
             <div className="container">
-                <h2 className="title">
-                    {title} <Link to={linkPage}>see more...</Link>
-                </h2>
+                {withoutLink ?
+                    <h2 className="title">
+                        {title}
+                    </h2>
+                    :
+                    <h2 className="title">
+                        {title} <Link to={linkPage}>see more...</Link>
+                    </h2>
+                }
                 <Swiper
                     modules={[Navigation, Mousewheel, Keyboard]}
                     pagination={{

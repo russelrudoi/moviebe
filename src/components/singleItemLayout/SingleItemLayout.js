@@ -1,5 +1,7 @@
 import changeUrlImage from '../../utils/changeUrlImage';
 import Fancybox from '../galerieFancyBox/FancyBox';
+import TemplateListSwiper from "../templateListSwiper/TemplateListSwiper";
+
 import './singleItemLayout.scss';
 
 const SingleItemLayout = ({
@@ -17,7 +19,9 @@ const SingleItemLayout = ({
     boxOffice,
     imDbRating,
     metacriticRating,
-    plot }) => {
+    plot,
+    trailer,
+    similars }) => {
 
     let changedImage = '';
 
@@ -82,7 +86,7 @@ const SingleItemLayout = ({
     return (
         <div className='single-item'>
             <div className="container">
-                <h2>{title}</h2>
+                <h2 className='single-item__title'>{title}</h2>
                 <div className="single-item__promo">
                     <div className="single-item__promo__thumbnail">
                         <img src={changedImage} alt="thumbnail" />
@@ -117,7 +121,10 @@ const SingleItemLayout = ({
                     </Fancybox>
                 </div>
                 <div className="single-item__trailer">
-                    <iframe src="https://www.imdb.com/video/imdb/vi2959588889/imdb/embed?autoplay=false&width=854" width="854" height="480" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true" frameborder="no" scrolling="no"></iframe>
+                    <iframe src={`${trailer ? trailer.linkEmbed : ''}?autoplay=false&width=854`} width="854" height="480" allowFullScreen={true} mozallowfullscreen="true" webkitallowfullscreen="true" frameBorder="no"></iframe>
+                </div>
+                <div className="single-item__similars">
+                    {similars ? <TemplateListSwiper data={similars} title={'Similars'} withoutLink={true}/> : null}
                 </div>
             </div>
         </div>

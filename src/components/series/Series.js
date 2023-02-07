@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux"
 import { useLocation } from "react-router-dom";
 import { fetchSeries } from "./seriesSlice";
 
-import TemplateListSwiper from "../templateListSwiper/TemplateListSwiper"
+import TemplateListSwiper from "../templateListSwiper/TemplateListSwiper";
 import TemplatePageList from "../templatePageList/TemplatePageList";
 
 const Series = () => {

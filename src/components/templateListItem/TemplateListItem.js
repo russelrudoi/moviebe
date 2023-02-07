@@ -36,7 +36,7 @@ const TemplateListItem = ({ title, year, image, id }) => {
             </div>
 
             <h2 className="template__title">{title}</h2>
-            <div className="template__year">({year})</div>
+            <div className="template__year">{year}</div>
         </Link>
     )
 }
