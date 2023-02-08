@@ -4,8 +4,9 @@ import changeUrlImage from "../../../utils/changeUrlImage";
 import Spinner from "../../spinner/Spinner";
 
 import './inTheatersListItem.scss'
+import { Link } from 'react-router-dom';
 
-const InTheatersListItem = ({ title, year, plot, image, imDbRating, metacriticRating, index }) => {
+const InTheatersListItem = ({ id, title, year, plot, image, imDbRating, metacriticRating, index }) => {
     const [imageLoaded, setImageLoaded] = useState(false);
 
     const handleImageLoaded = () => {
@@ -50,9 +51,11 @@ const InTheatersListItem = ({ title, year, plot, image, imDbRating, metacriticRa
                     </div>
                 </div>
             </div>
-            <button className="btn in-theaters__btn-watch">
-                watch
-            </button>
+            <Link to={`/moviebe/${id}`}>
+                <button className="btn in-theaters__btn-watch">
+                    watch
+                </button>
+            </Link>
         </div>
 
     )

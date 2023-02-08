@@ -1,8 +1,11 @@
-import changeUrlImage from '../../utils/changeUrlImage';
+import { useState } from 'react';
 import Fancybox from '../galerieFancyBox/FancyBox';
+import classNames from 'classnames';
+import changeUrlImage from '../../utils/changeUrlImage';
 import TemplateListSwiper from "../templateListSwiper/TemplateListSwiper";
 
 import './singleItemLayout.scss';
+import Spinner from '../spinner/Spinner';
 
 const SingleItemLayout = ({
     title,
@@ -23,53 +26,41 @@ const SingleItemLayout = ({
     trailer,
     similars }) => {
 
+    const [imageLoaded, setImageLoaded] = useState(false)
+
     let changedImage = '';
 
     if (image) {
         changedImage = changeUrlImage(image)
     }
-    console.log(images)
+
+    const isData = (data) => {
+        if (data) return data
+        else return 'No Data'
+    }
+
+    const handleImageLoaded = () => {
+        setImageLoaded(true)
+    };
 
     const renderImagesGalerie = ({ items }) => {
-        console.log(items)
         if (items) {
             return items.map(({ image }, index) => {
-                const changedImage = changeUrlImage(image);
+                if (index <= 10) {
+                    const changedImage = changeUrlImage(image);
 
-                if (index < 3) {
-                    return (
-                        <div className="single-item__galerie__item">
-                            <img
-                                src={changedImage}
-                                alt="Galerie"
-                                data-fancybox="gallery"
-                                data-src={changedImage} />
-                        </div>
-                    )
-                }
+                    const imageWrapperClass = classNames("single-item__galerie__item", {
+                        "single-item__galerie__item_overlay": index === 3,
+                        "single-item__galerie__item_hide": index > 3
+                    })
 
-                if (index === 3) {
                     return (
-                        <div className="single-item__galerie__item single-item__galerie__item_overlay"
+                        <div className={`${imageWrapperClass}`}
                             data-fancybox="gallery"
                             data-src={changedImage}>
                             <img
                                 src={changedImage}
-                                alt="Galerie"
-                                data-fancybox="gallery"
-                                data-src={changedImage} />
-                        </div>
-                    )
-                }
-
-                if (index <= 10) {
-                    return (
-                        <div className="single-item__galerie__item single-item__galerie__item_hide">
-                            <img
-                                src={changedImage}
-                                alt="Galerie"
-                                data-fancybox="gallery"
-                                data-src={changedImage} />
+                                alt="Galerie" />
                         </div>
                     )
                 }
@@ -77,7 +68,7 @@ const SingleItemLayout = ({
         }
     }
 
-    let imagesGalerie = '';
+    let imagesGalerie = null;
 
     if (images) {
         imagesGalerie = renderImagesGalerie(images)
@@ -100,15 +91,15 @@ const SingleItemLayout = ({
                         </div>
                     </div>
                     <div className="single-item__promo__descr">
-                        <div><span>Year:</span>{year}</div>
-                        <div className="even"><span>Country:</span>{countries}</div>
-                        <div><span>Genres:</span>{genres}</div>
-                        <div className="even"><span>Awards:</span>{awards}</div>
-                        <div><span>Companies:</span>{companies}</div>
-                        <div className="even"><span>Directors:</span>{directors}</div>
-                        <div><span>Starring:</span>{stars}</div>
-                        <div className="even"><span>Runtime:</span>{runtimeStr}</div>
-                        <div><span>Budget:</span>{boxOffice ? boxOffice.budget : ''}</div>
+                        <div><span>Year:</span>{isData(year)}</div>
+                        <div className="even"><span>Country:</span>{isData(countries)}</div>
+                        <div><span>Genres:</span>{isData(genres)}</div>
+                        <div className="even"><span>Awards:</span>{isData(awards)}</div>
+                        <div><span>Companies:</span>{isData(companies)}</div>
+                        <div className="even"><span>Directors:</span>{isData(directors)}</div>
+                        <div><span>Starring:</span>{isData(stars)}</div>
+                        <div className="even"><span>Runtime:</span>{isData(runtimeStr)}</div>
+                        <div><span>Budget:</span>{boxOffice ? isData(boxOffice.budget) : 'No Data'}</div>
                     </div>
                 </div>
                 <div className="single-item__descr">
@@ -124,7 +115,7 @@ const SingleItemLayout = ({
                     <iframe src={`${trailer ? trailer.linkEmbed : ''}?autoplay=false&width=854`} width="854" height="480" allowFullScreen={true} mozallowfullscreen="true" webkitallowfullscreen="true" frameBorder="no"></iframe>
                 </div>
                 <div className="single-item__similars">
-                    {similars ? <TemplateListSwiper data={similars} title={'Similars'} withoutLink={true}/> : null}
+                    {similars ? <TemplateListSwiper data={similars} title={'Similars'} withoutLink={true} /> : null}
                 </div>
             </div>
         </div>

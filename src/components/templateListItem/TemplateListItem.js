@@ -1,10 +1,10 @@
 import { useState } from 'react';
+import { Link } from 'react-router-dom';
 import classNames from 'classnames';
 import changeUrlImage from '../../utils/changeUrlImage'
 import Spinner from "../spinner/Spinner";
 
 import './templateListItem.scss'
-import { Link } from 'react-router-dom';
 
 const TemplateListItem = ({ title, year, image, id }) => {
     const [imageLoaded, setImageLoaded] = useState(false)

@@ -6,7 +6,7 @@ import ErrorIcon from '../../resources/img/icon/error.png';
 import '../../style/style.scss';
 import './inTheatersList.scss';
 
-const InTheatersList = ({inTheaters, inTheatersLoadingStatus}) => {
+const InTheatersList = ({ inTheaters, inTheatersLoadingStatus }) => {
 
     if (inTheatersLoadingStatus === 'loading') {
         return (
@@ -40,6 +40,7 @@ const InTheatersList = ({inTheaters, inTheatersLoadingStatus}) => {
                     <InTheatersListItem
                         key={id}
                         index={index}
+                        id={id}
                         {...props}
                     />
                 )
@@ -55,7 +56,9 @@ const InTheatersList = ({inTheaters, inTheatersLoadingStatus}) => {
                 <h2 className="title">In theaters <Link to='/moviebe/intheatre'>see more...</Link></h2>
                 <div className="in-theaters__wrapper">
                     {elements}
-                    <button className="btn in-theaters__btn-link">see more</button>
+                    <Link to='/moviebe/intheaters'>
+                        <button className="btn in-theaters__btn-link">see more</button>
+                    </Link>
                 </div>
             </div>
         </div>

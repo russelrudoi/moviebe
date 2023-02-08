@@ -1,4 +1,5 @@
 import { useSelector } from 'react-redux';
+import { Link } from 'react-router-dom';
 import changeUrlImage from '../../utils/changeUrlImage';
 
 import Spinner from "../spinner/Spinner";
@@ -36,7 +37,7 @@ const Promo = () => {
         }
 
         if (arr.length) {
-            const { title, fullTitle, plot, imDbRating, metacriticRating, image } = arr[random(3, arr.length)]
+            const { id, title, fullTitle, plot, imDbRating, metacriticRating, image } = arr[random(3, arr.length)]
 
             return (
                 <div className="container inner_wrapper">
@@ -54,7 +55,9 @@ const Promo = () => {
                                 MC:<span>{metacriticRating}</span>
                             </div>
                         </div>
-                        <button className="btn promo__btn">more details</button>
+                        <Link to={`/moviebe/${id}`}>
+                            <button className="btn promo__btn">more details</button>
+                        </Link>
                     </div>
                     <div className="promo__img">
                         <img src={changeUrlImage(image)} alt="movies" />
