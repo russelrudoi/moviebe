@@ -5,9 +5,15 @@ import Spinner from "../../spinner/Spinner";
 
 import './inTheatersListItem.scss'
 import { Link } from 'react-router-dom';
+import { useEffect } from 'react';
 
 const InTheatersListItem = ({ id, title, year, plot, image, imDbRating, metacriticRating, index }) => {
     const [imageLoaded, setImageLoaded] = useState(false);
+    const [widthViewport, setWidthViewport] = useState(0);
+
+    useEffect(() => {
+        setWidthViewport(widthViewport => widthViewport = window.innerWidth)
+    }, [])
 
     const handleImageLoaded = () => {
         setImageLoaded(true)
@@ -17,11 +23,15 @@ const InTheatersListItem = ({ id, title, year, plot, image, imDbRating, metacrit
         'in-theaters__image_loading': !imageLoaded
     })
 
+
+
     const itemSizeClass = classNames(
         'in-theaters__item',
-        { 'in-theaters__big': index === 0 },
-        { 'in-theaters__small': index === 1 },
-        { 'in-theaters__small second': index === 2 }
+        {
+            'in-theaters__big': index === 0 && widthViewport > 1140,
+            'in-theaters__small': index === 1 || (index === 0 && widthViewport < 1140) || index === 3,
+            'in-theaters__small second': index === 2
+        }
     )
 
     const changedImage = changeUrlImage(image)

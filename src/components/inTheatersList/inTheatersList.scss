@@ -1,8 +1,10 @@
 @import '../../style/variables.scss';
 
 .in-theaters {
+
     .title {
         a {
+            display: none;
             margin-left: 10px;
             font-size: 1.1rem;
             text-decoration: none;
@@ -14,7 +16,7 @@
         position: relative;
         margin-top: 45px;
         width: 100%;
-        height: 618px;
+        max-height: 618px;
         display: grid;
         grid-gap: 20px;
         grid-template-columns: 550px 1fr 1fr;
@@ -31,5 +33,52 @@
         grid-area: btn;
         width: 350px;
         height: 50px;
+    }
+}
+
+@media (max-width:1140px) {
+    .in-theaters {
+
+        .title {
+            a {
+                display: inline;
+            }
+        }
+
+        &__wrapper {
+            display: flex;
+            grid-gap: 0;
+            justify-content: space-between;
+            column-gap: 20px;
+        }
+
+        &__btn-link {
+            display: none;
+        }
+    }
+}
+
+@media (max-width:768px) {
+    .in-theaters {
+
+
+        &__wrapper {
+            max-height: 100%;
+            display: grid;
+            gap: 20px;
+            grid-template-columns: none;
+            grid-template-rows: none;
+            grid-template-areas: none;
+        }
+    }
+}
+
+@media (max-width:576px) {
+    .in-theaters {
+
+        &__wrapper {
+            display: block;
+            margin-top: 30px;
+        }
     }
 }

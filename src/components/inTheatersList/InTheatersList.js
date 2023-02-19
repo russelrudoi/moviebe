@@ -11,31 +11,32 @@ const InTheatersList = ({ inTheaters, inTheatersLoadingStatus }) => {
     if (inTheatersLoadingStatus === 'loading') {
         return (
             <div className="in-theaters">
-                <div className="container">
-                    <h2 className="title">In theaters</h2>
-                    <div className="spinner">
-                        <Spinner />
-                    </div>
+                <h2 className="title">In theaters</h2>
+                <div className="spinner">
+                    <Spinner />
                 </div>
             </div>
         )
     } else if (inTheatersLoadingStatus === 'error') {
         return (
             <div className="in-theaters">
-                <div className="container">
-                    <h2 className="title">In theaters</h2>
-                    <div className="error">
-                        <img src={ErrorIcon} alt="" />
-                        Error
-                    </div>
+                <h2 className="title">In theaters</h2>
+                <div className="error">
+                    <img src={ErrorIcon} alt="" />
+                    Error
                 </div>
             </div>
         )
     }
 
     const renderList = (arr) => {
+        let amountMovie = 3;
+        
+        if (window.innerWidth <= 768) {
+            amountMovie = 4
+        }
         return arr.map(({ id, ...props }, index) => {
-            if (index < 3) {
+            if (index < amountMovie) {
                 return (
                     <InTheatersListItem
                         key={id}
@@ -44,7 +45,7 @@ const InTheatersList = ({ inTheaters, inTheatersLoadingStatus }) => {
                         {...props}
                     />
                 )
-            }
+            } 
         })
     }
 
@@ -52,14 +53,12 @@ const InTheatersList = ({ inTheaters, inTheatersLoadingStatus }) => {
 
     return (
         <div className="in-theaters">
-            <div className="container">
-                <h2 className="title">In theaters <Link to='/moviebe/intheatre'>see more...</Link></h2>
-                <div className="in-theaters__wrapper">
-                    {elements}
-                    <Link to='/moviebe/intheaters'>
-                        <button className="btn in-theaters__btn-link">see more</button>
-                    </Link>
-                </div>
+            <h2 className="title">In theaters <Link to='/moviebe/intheatre'>see more...</Link></h2>
+            <div className="in-theaters__wrapper">
+                {elements}
+                <Link to='/moviebe/intheaters'>
+                    <button className="btn in-theaters__btn-link">see more</button>
+                </Link>
             </div>
         </div>
     )

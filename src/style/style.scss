@@ -10,9 +10,11 @@ html {
     font-size: 14px;
 }
 
+main,
 .container {
-    width: 1170px;
+    max-width: 1230px;
     margin: 0 auto;
+    padding: 0 25px;
 }
 
 .title {
@@ -23,6 +25,13 @@ html {
     color: $main-color;
     margin-top: 30px;
     text-transform: uppercase;
+}
+
+@media (max-width:576px) {
+    .title {
+        margin-top: 50px;
+        font-size: 25px;
+    }
 }
 
 .btn {

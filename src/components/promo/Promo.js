@@ -4,6 +4,7 @@ import changeUrlImage from '../../utils/changeUrlImage';
 
 import Spinner from "../spinner/Spinner";
 import ErrorIcon from '../../resources/img/icon/error.png';
+import BackgroundImg from '../../resources/img/background.jpg'
 
 import './promo.scss'
 
@@ -40,7 +41,7 @@ const Promo = () => {
             const { id, title, fullTitle, plot, imDbRating, metacriticRating, image } = arr[random(3, arr.length)]
 
             return (
-                <div className="container inner_wrapper">
+                <>
                     <div className="promo__info">
                         <h1 className="promo__title">{title}</h1>
                         <div className="promo__original-title">{fullTitle}</div>
@@ -62,7 +63,7 @@ const Promo = () => {
                     <div className="promo__img">
                         <img src={changeUrlImage(image)} alt="movies" />
                     </div>
-                </div>
+                </>
             )
         }
     }
@@ -72,7 +73,8 @@ const Promo = () => {
     return (
         <div className="promo">
             {element}
-            <div className="promo__bg"></div>
+            <img className="promo__bg" src={BackgroundImg}/>
+            <div className="promo__bg_overlay"></div>
         </div>
     )
 }

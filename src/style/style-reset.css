@@ -46,6 +46,8 @@ ol[class] {
 
 a:not([class]) {
   text-decoration-skip-ink: auto;
+  text-decoration: none;
+  color: #FFF;
 }
 
 img {

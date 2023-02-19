@@ -6,7 +6,7 @@ import Spinner from "../spinner/Spinner";
 
 import './templateListItem.scss'
 
-const TemplateListItem = ({ title, year, image, id }) => {
+const TemplateListItem = ({ title, year, image, id, imDbRating }) => {
     const [imageLoaded, setImageLoaded] = useState(false)
     const changedImage = changeUrlImage(image)
 
@@ -27,6 +27,7 @@ const TemplateListItem = ({ title, year, image, id }) => {
             <div className='template__image'>
                 <img className={`${imageClass}`} src={changedImage} alt="movies" onLoad={handleImageLoaded} />
                 <button className='template__image__btn'>watch</button>
+                <div className="template__image__rating">IMDB: <span>{imDbRating}</span></div>
                 {
                     !imageLoaded
                         ? <Spinner />

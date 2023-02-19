@@ -7,7 +7,7 @@ import './header.scss'
 import '../../style/style.scss'
 
 const Header = () => {
-
+    const [showModal, setShowModal] = useState(false);
     const [showNav, setShowNav] = useState(false);
     const [hideNav, setHideNav] = useState(false);
     const { pathname } = useLocation();
@@ -22,7 +22,7 @@ const Header = () => {
 
     if (pathname !== '/moviebe/') {
         return (
-            <HeaderPopDown headerClass={'header header-fixed'}/>
+            <HeaderPopDown headerClass={'header header-fixed'} />
         )
     }
 
@@ -41,6 +41,19 @@ const Header = () => {
         }
 
     }
+
+    const handlerBurger = (e) => {
+        e.classList.toggle("header__burger_active");
+        setShowModal(!showModal)
+    }
+
+    const modalClass = classNames('modal', {
+        'modal_active': showModal
+    })
+
+    const burgerClass = classNames('header__burger', {
+        'header__burger_active': showModal
+    })
 
     const headerClass = classNames('header', {
         'header-hide': !showNav,
@@ -71,14 +84,36 @@ const Header = () => {
                             </li>
                         </ul>
                     </nav>
+                    <div className={`${burgerClass}`} onClick={(e) => handlerBurger(e.target)}></div>
                 </div>
             </header>
-            <HeaderPopDown headerClass={headerClass}/>
+            <HeaderPopDown
+                headerClass={headerClass}
+                burgerClass={burgerClass}
+                handlerBurger={handlerBurger} />
+            <div className={`${modalClass}`}>
+                <nav className='modal__nav'>
+                    <ul className='modal__nav__list'>
+                        <li>
+                            <Link to='/moviebe/movies'>MOVIES</Link>
+                        </li>
+                        <li>
+                            <Link to='/moviebe/series'>SERIES</Link>
+                        </li>
+                        <li>
+                            <Link to='/moviebe/intheaters'>IN THEATERS</Link>
+                        </li>
+                        <li>
+                            <Link to='/moviebe/comingsoon'>COMING SOON</Link>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
         </>
     )
 }
 
-const HeaderPopDown = ({headerClass}) => {
+const HeaderPopDown = ({ headerClass, burgerClass, handlerBurger }) => {
     return (
         <header className={`${headerClass}`}>
             <div className="container inner__wrapper">
@@ -101,6 +136,7 @@ const HeaderPopDown = ({headerClass}) => {
                         </li>
                     </ul>
                 </nav>
+                <div className={`${burgerClass}`} onClick={(e) => handlerBurger(e.target)}></div>
             </div>
         </header>
     )

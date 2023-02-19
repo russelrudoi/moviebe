@@ -14,7 +14,7 @@ const SinglePage = () => {
     useEffect(() => {
         setIsLoading(true)
         fetchSinglePage()
-    }, [])
+    }, [id])
 
     const fetchSinglePage = async () => {
         const res = await request(`https://imdb-api.com/en/API/Title/k_dhsgy58w/${id}/Images,Trailer,`);

@@ -1,9 +1,9 @@
 @import '../../style/variables.scss';
 
 .template-swiper {
-    margin-top: 75px;
 
     .title {
+
         a {
             margin-left: 10px;
             font-size: 1.1rem;
@@ -55,6 +55,20 @@
                 &:hover::before {
                     color: $main-color;
                 }
+            }
+        }
+    }
+}
+
+@media (max-width: 576px) {
+    .template-swiper {
+        .title {
+            margin-bottom: 15px;
+            font-size: 25px;
+
+            a {
+                margin-left: 1px;
+                font-size: 1rem;
             }
         }
     }
