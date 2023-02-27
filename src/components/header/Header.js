@@ -20,12 +20,6 @@ const Header = () => {
         }
     }, [])
 
-    if (pathname !== '/moviebe/') {
-        return (
-            <HeaderPopDown headerClass={'header header-fixed'} />
-        )
-    }
-
     function scrollHandler() {
 
         if (window.pageYOffset > 700) {
@@ -61,6 +55,18 @@ const Header = () => {
         'header-unfixed': hideNav
     })
 
+    if (pathname !== '/moviebe/') {
+        return (
+            <>
+                <HeaderPopDown
+                    headerClass={'header header-fixed'}
+                    burgerClass={burgerClass}
+                    handlerBurger={handlerBurger} />
+                <Modal modalClass={modalClass} />
+            </>
+        )
+    }
+
     return (
         <>
             <header className='header'>
@@ -91,24 +97,7 @@ const Header = () => {
                 headerClass={headerClass}
                 burgerClass={burgerClass}
                 handlerBurger={handlerBurger} />
-            <div className={`${modalClass}`}>
-                <nav className='modal__nav'>
-                    <ul className='modal__nav__list'>
-                        <li>
-                            <Link to='/moviebe/movies'>MOVIES</Link>
-                        </li>
-                        <li>
-                            <Link to='/moviebe/series'>SERIES</Link>
-                        </li>
-                        <li>
-                            <Link to='/moviebe/intheaters'>IN THEATERS</Link>
-                        </li>
-                        <li>
-                            <Link to='/moviebe/comingsoon'>COMING SOON</Link>
-                        </li>
-                    </ul>
-                </nav>
-            </div>
+            <Modal modalClass={modalClass} />
         </>
     )
 }
@@ -139,6 +128,29 @@ const HeaderPopDown = ({ headerClass, burgerClass, handlerBurger }) => {
                 <div className={`${burgerClass}`} onClick={(e) => handlerBurger(e.target)}></div>
             </div>
         </header>
+    )
+}
+
+const Modal = ({ modalClass }) => {
+    return (
+        <div className={`${modalClass}`}>
+            <nav className='modal__nav'>
+                <ul className='modal__nav__list'>
+                    <li>
+                        <Link to='/moviebe/movies'>MOVIES</Link>
+                    </li>
+                    <li>
+                        <Link to='/moviebe/series'>SERIES</Link>
+                    </li>
+                    <li>
+                        <Link to='/moviebe/intheaters'>IN THEATERS</Link>
+                    </li>
+                    <li>
+                        <Link to='/moviebe/comingsoon'>COMING SOON</Link>
+                    </li>
+                </ul>
+            </nav>
+        </div>
     )
 }
 

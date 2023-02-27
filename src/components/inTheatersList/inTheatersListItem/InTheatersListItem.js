@@ -12,8 +12,17 @@ const InTheatersListItem = ({ id, title, year, plot, image, imDbRating, metacrit
     const [widthViewport, setWidthViewport] = useState(0);
 
     useEffect(() => {
-        setWidthViewport(widthViewport => widthViewport = window.innerWidth)
+
+        window.addEventListener("resize", resizeHandler);
+        resizeHandler();
+        return () => {
+            window.removeEventListener("resize", resizeHandler);
+        };
     }, [])
+
+    const resizeHandler = () => {
+        setWidthViewport(window.innerWidth);
+    };
 
     const handleImageLoaded = () => {
         setImageLoaded(true)
@@ -29,7 +38,7 @@ const InTheatersListItem = ({ id, title, year, plot, image, imDbRating, metacrit
         'in-theaters__item',
         {
             'in-theaters__big': index === 0 && widthViewport > 1140,
-            'in-theaters__small': index === 1 || (index === 0 && widthViewport < 1140) || index === 3,
+            'in-theaters__small': index === 1 || (index === 0 && widthViewport <= 1140) || index === 3,
             'in-theaters__small second': index === 2
         }
     )

@@ -1,14 +1,29 @@
-import { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { useState, useEffect } from 'react';
+import { Link, useLocation } from 'react-router-dom';
 import classNames from 'classnames';
-import changeUrlImage from '../../utils/changeUrlImage'
+import changeUrlImage from '../../utils/changeUrlImage';
 import Spinner from "../spinner/Spinner";
 
+import 'swiper/css/lazy';
 import './templateListItem.scss'
 
 const TemplateListItem = ({ title, year, image, id, imDbRating }) => {
     const [imageLoaded, setImageLoaded] = useState(false)
-    const changedImage = changeUrlImage(image)
+    const [widthViewport, setWidthViewport] = useState(0);
+    const { pathname } = useLocation()
+    const changedImage = changeUrlImage(image);
+
+    useEffect(() => {
+        window.addEventListener("resize", resizeHandler);
+        resizeHandler();
+        return () => {
+            window.removeEventListener("resize", resizeHandler);
+        };
+    }, [])
+
+    const resizeHandler = () => {
+        setWidthViewport(window.innerWidth);
+    };
 
     const handleImageLoaded = () => {
         setImageLoaded(true)
@@ -18,28 +33,56 @@ const TemplateListItem = ({ title, year, image, id, imDbRating }) => {
         'template__image_loading': !imageLoaded
     })
 
-    const handleClick = () => {
-        console.log(title, year, id)
+    if (pathname === '/moviebe/' || pathname === `/moviebe/${id}`) {
+        return (
+            // to={`${widthViewport > 1024 ? `/moviebe/${id}` : ''}`}
+            <Link to={`/moviebe/${id}`}>
+                <div className='template__image' >
+                    <img
+                        className='swiper-lazy'
+                        data-srcset={changedImage}
+                        loading='lazy'
+                        alt='' />
+                    <div className='template__image__overlay'>
+                        <Link to={`/moviebe/${id}`}>
+                            <button className='template__image__btn'>watch</button>
+                        </Link>
+                        <span>
+                            <div className="template__image__rating">IMDB: <span>{imDbRating}</span></div>
+                        </span>
+                    </div>
+                    <div className="swiper-lazy-preloader swiper-lazy-preloader-white"></div>
+                </div>
+
+                <h2 className="template__title">{title}</h2>
+                <div className="template__year">{year}</div>
+            </Link>
+        )
+    } else {
+        return (
+            <Link to={`/moviebe/${id}`}>
+                <div className='template__image'>
+                    <img className={`${imageClass}`} src={changedImage} alt="movies" onLoad={handleImageLoaded} />
+                    <div className='template__image__overlay'>
+                        <Link to={`/moviebe/${id}`}>
+                            <button className='template__image__btn'>watch</button>
+                        </Link>
+                        <span>
+                            <div className="template__image__rating">IMDB: <span>{imDbRating}</span></div>
+                        </span>
+                    </div>
+                    {
+                        !imageLoaded
+                            ? <Spinner />
+                            : null
+                    }
+                </div>
+
+                <h2 className="template__title">{title}</h2>
+                <div className="template__year">{year}</div>
+            </Link>
+        )
     }
-
-    return (
-        <Link to={`/moviebe/${id}`} onClick={handleClick}>
-            <div className='template__image'>
-                <img className={`${imageClass}`} src={changedImage} alt="movies" onLoad={handleImageLoaded} />
-                <button className='template__image__btn'>watch</button>
-                <div className="template__image__rating">IMDB: <span>{imDbRating}</span></div>
-                {
-                    !imageLoaded
-                        ? <Spinner />
-                        : null
-                }
-                <div className={`template__image_overlay ${imageClass}`}></div>
-            </div>
-
-            <h2 className="template__title">{title}</h2>
-            <div className="template__year">{year}</div>
-        </Link>
-    )
 }
 
 export default TemplateListItem;

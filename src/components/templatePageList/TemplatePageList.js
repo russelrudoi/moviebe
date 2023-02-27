@@ -12,7 +12,7 @@ const Items = ({ currentItems }) => {
             if (index <= 50) {
                 return (
                     <div className="template__item" key={id}>
-                        <TemplateListItem {...props} id={id}/>
+                        <TemplateListItem {...props} id={id} />
                     </div>
                 )
             }
@@ -73,30 +73,28 @@ const TemplatePageList = ({ items, loadingStatus }) => {
 
     return (
         <div className="template-page">
-            <div className="container">
-                <Items currentItems={currentItems} />
-                <div className="template-page__pagination-wrapper">
-                    <ReactPaginate
-                        nextLabel=">"
-                        onPageChange={handlePageClick}
-                        pageRangeDisplayed={3}
-                        marginPagesDisplayed={2}
-                        pageCount={pageCount}
-                        previousLabel="<"
-                        pageClassName="page-item"
-                        pageLinkClassName="page-link"
-                        previousClassName="page-item"
-                        previousLinkClassName="page-link"
-                        nextClassName="page-item"
-                        nextLinkClassName="page-link"
-                        breakLabel="..."
-                        breakClassName="page-item"
-                        breakLinkClassName="page-link"
-                        containerClassName="pagination"
-                        activeClassName="page-item_active"
-                        renderOnZeroPageCount={null}
-                    />
-                </div>
+            <Items currentItems={currentItems} />
+            <div className="template-page__pagination-wrapper">
+                <ReactPaginate
+                    nextLabel=">"
+                    onPageChange={handlePageClick}
+                    pageRangeDisplayed={3}
+                    marginPagesDisplayed={2}
+                    pageCount={pageCount}
+                    previousLabel="<"
+                    pageClassName="page-item"
+                    pageLinkClassName="page-link"
+                    previousClassName="page-item"
+                    previousLinkClassName="page-link"
+                    nextClassName="page-item"
+                    nextLinkClassName="page-link"
+                    breakLabel="..."
+                    breakClassName="page-item"
+                    breakLinkClassName="page-link"
+                    containerClassName="pagination"
+                    activeClassName="page-item_active"
+                    renderOnZeroPageCount={null}
+                />
             </div>
         </div>
     );

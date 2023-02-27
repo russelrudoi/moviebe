@@ -28,6 +28,11 @@ main,
 }
 
 @media (max-width:576px) {
+    main,
+    .container {
+        padding: 0 10px;
+    }
+
     .title {
         margin-top: 50px;
         font-size: 25px;

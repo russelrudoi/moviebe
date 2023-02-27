@@ -8,34 +8,33 @@
         text-align: center;
         width: 190px;
 
-        &:hover {
-            .template__image {
+        // &:hover {
+        //     .template__image {
 
-                &__btn {
-                    top: 50%;
-                    opacity: 1;
-                    transition: all .2s linear;
-                }
+        //         &__btn {
+        //             top: 50%;
+        //             opacity: 1;
+        //             transition: all .2s linear;
+        //         }
 
-                img {
-                    transform: scale(103%);
-                    opacity: .3;
-                    transition: all .2s linear;
-                }
+        //         img {
+        //             transform: scale(103%);
+        //             opacity: .3;
+        //             transition: all .15s linear;
+        //         }
 
-                &__rating {
-                    opacity: 1;
-                    transition: all .2s linear;
-                    left: 15px;
-                    bottom: 10px;
-                }
-            }
+        //         &__rating {
+        //             margin-top: 10px;
+        //             opacity: 1;
+        //             transition: all .2s linear;
+        //         }
+        //     }
 
-            .template__title {
-                color: #b6131e;
-                transition: all .2s linear;
-            }
-        }
+        //     .template__title {
+        //         color: #b6131e;
+        //         transition: all .2s linear;
+        //     }
+        // }
 
         a {
             text-decoration: none;
@@ -55,6 +54,14 @@
             display: none;
         }
 
+        &__overlay {
+            display: flex;
+            justify-content: center;
+            position: absolute;
+            width: 100%;
+            height: 100%;
+        }
+
         img {
             margin: 0 auto;
             height: 100%;
@@ -64,7 +71,7 @@
         }
 
         &__btn {
-            opacity: 0;
+            visibility: hidden;
             width: 120px;
             height: 40px;
             position: absolute;
@@ -82,9 +89,7 @@
 
         &__rating {
             opacity: 0;
-            position: absolute;
-            bottom: 5px;
-            left: 10px;
+            transition: all .15s linear;
             font-size: 20px;
 
             span {
@@ -107,3 +112,72 @@
         font-size: 1.2rem;
     }
 }
+
+@media screen and (min-width: 1025px) {
+    .template {
+        &__item {
+            &:hover {
+                .template__image {
+
+                    &__btn {
+                        top: 50%;
+                        visibility: visible;
+                        transition: all .2s linear;
+                    }
+
+                    img {
+                        transform: scale(103%);
+                        opacity: .3;
+                        transition: all .15s linear;
+                    }
+
+                    &__rating {
+                        margin-top: 10px;
+                        opacity: 1;
+                        transition: all .2s linear;
+                    }
+                }
+
+                .template__title {
+                    color: #b6131e;
+                    transition: all .2s linear;
+                }
+            }
+        }
+    }
+}
+
+// @media screen and (max-width: 1024px) {
+//     .template {
+//         &__item {
+//             &:active {
+//                 .template__image {
+
+//                     &__btn {
+//                         top: 50%;
+//                         opacity: 1;
+//                         transition: all .2s linear;
+//                     }
+
+//                     img {
+//                         transform: scale(103%);
+//                         opacity: .3;
+//                         transition: all .2s linear;
+//                     }
+
+//                     &__rating {
+//                         opacity: 1;
+//                         transition: all .2s linear;
+//                         left: 15px;
+//                         bottom: 10px;
+//                     }
+//                 }
+
+//                 .template__title {
+//                     color: #b6131e;
+//                     transition: all .2s linear;
+//                 }
+//             }
+//         }
+//     }
+// }

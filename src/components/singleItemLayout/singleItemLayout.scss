@@ -35,7 +35,7 @@
         }
 
         &__descr {
-            min-width: 50%;
+
             font-size: 1.5rem;
             font-family: 'Poppins', sans-serif;
 
@@ -44,6 +44,7 @@
                 display: flex;
                 align-items: center;
                 min-height: 50px;
+                line-height: 2rem;
             }
 
             span {
@@ -116,5 +117,70 @@
         margin-top: 50px;
         display: flex;
         justify-content: center;
+    }
+}
+
+@media (max-width: 1240px) {
+    .single-item {
+        &__title {
+            max-width: 70%;
+        }
+
+        &__promo {
+            column-gap: 10px;
+
+            &__descr {
+                font-size: 1.2rem;
+
+                span {
+                    font-size: 1rem;
+                }
+            }
+        }
+
+        &__galerie {
+            justify-content: center;
+        }
+    }
+}
+
+@media (max-width: 768px) {
+    .single-item {
+
+        &__title {
+            max-width: 100%;
+        }
+
+        &__promo {
+            flex-direction: column;
+
+            &__thumbnail {
+                margin: 0 auto;
+            }
+        }
+
+        &__descr {
+            width: 100%;
+        }
+    }
+}
+
+@media (max-width: 425px) {
+    .single-item {
+
+        &__promo {
+
+            &__descr {
+                font-size: 1rem;
+
+                span {
+                    font-size: 0.8rem;
+                }
+            }
+        }
+
+        &__descr {
+            font-size: 1.3rem;
+        }
     }
 }

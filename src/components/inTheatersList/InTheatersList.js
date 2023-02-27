@@ -1,3 +1,4 @@
+import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import InTheatersListItem from './inTheatersListItem/InTheatersListItem';
 import Spinner from "../spinner/Spinner";
@@ -7,6 +8,19 @@ import '../../style/style.scss';
 import './inTheatersList.scss';
 
 const InTheatersList = ({ inTheaters, inTheatersLoadingStatus }) => {
+    const [widthViewport, setWidthViewport] = useState(0);
+
+    useEffect(() => {
+        window.addEventListener("resize", resizeHandler);
+        resizeHandler();
+        return () => {
+            window.removeEventListener("resize", resizeHandler);
+        };
+    }, [])
+
+    const resizeHandler = () => {
+        setWidthViewport(window.innerWidth);
+    };
 
     if (inTheatersLoadingStatus === 'loading') {
         return (
@@ -31,8 +45,8 @@ const InTheatersList = ({ inTheaters, inTheatersLoadingStatus }) => {
 
     const renderList = (arr) => {
         let amountMovie = 3;
-        
-        if (window.innerWidth <= 768) {
+
+        if (widthViewport <= 768) {
             amountMovie = 4
         }
         return arr.map(({ id, ...props }, index) => {
@@ -45,7 +59,7 @@ const InTheatersList = ({ inTheaters, inTheatersLoadingStatus }) => {
                         {...props}
                     />
                 )
-            } 
+            }
         })
     }
 

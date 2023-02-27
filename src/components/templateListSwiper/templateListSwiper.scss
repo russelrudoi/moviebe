@@ -38,7 +38,7 @@
                     font-size: 2.85rem;
                 }
 
-                &:hover::before {
+                &:active::before {
                     transition: all .3s ease-out;
                     color: $theme-color;
                 }
@@ -54,6 +54,21 @@
 
                 &:hover::before {
                     color: $main-color;
+                }
+            }
+        }
+    }
+}
+
+@media (min-width: 992px) {
+    .swiper {
+        &-button {
+
+            &-next,
+            &-prev {
+                &:hover::before {
+                    transition: all .3s ease-out;
+                    color: $theme-color;
                 }
             }
         }

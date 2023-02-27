@@ -53,3 +53,28 @@
         }
     }
 }
+
+@media (max-width: 576px) {
+    .footer {
+
+        &__logo {
+
+            img {
+                width: 44px;
+                height: 45px;
+            }
+
+            h1 {
+                font-size: 1.5rem;
+            }
+        }
+
+        &__info {
+
+            a {
+                margin: 0 15px;
+                font-size: 1.7rem;
+            }
+        }
+    }
+}
