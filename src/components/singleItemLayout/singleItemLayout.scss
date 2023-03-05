@@ -13,6 +13,7 @@
     &__promo {
         display: flex;
         column-gap: 40px;
+        
 
         &__thumbnail {
 
@@ -35,7 +36,7 @@
         }
 
         &__descr {
-
+            flex-grow: 1;
             font-size: 1.5rem;
             font-family: 'Poppins', sans-serif;
 
