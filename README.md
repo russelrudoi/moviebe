@@ -1,18 +1,12 @@
-# Getting Started with Create React App and Redux
+# MovieBE - site to find your favorite movie or TV series
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app), using the [Redux](https://redux.js.org/) and [Redux Toolkit](https://redux-toolkit.js.org/) template.
+It's my study project for finding movies, TV series, and keeping up with new films.
 
-## Available Scripts
+## Website Features
 
-In the project directory, you can run:
+On the site, you can follow both new movies and TV series and those that are already in theaters.
 
-### `npm start`
-
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
-
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+Click on the movie you like and you will be taken to its page. On the page, you will see information about the movie, stills from the movie, and the trailer. If you like this movie, you can check out similar movies at the bottom of the page.
 
 ### `npm test`
 
