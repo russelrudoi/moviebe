@@ -7,7 +7,7 @@ const Footer = () => {
     return (
         <footer className="footer">
             <div className="container footer__wrapper">
-                <Link to="/moviebe/" className='footer__logo'>
+                <Link to="/" className='footer__logo'>
                     <img src={Logo} alt="Logo" />
                     <h1>MOVIEBE</h1>
                 </Link>

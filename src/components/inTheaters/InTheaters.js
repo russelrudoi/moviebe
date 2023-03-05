@@ -14,14 +14,14 @@ const InTheaters = () => {
         dispatch(fetchInTheaters());
     }, [])
 
-    if (pathname === '/moviebe/') {
+    if (pathname === '/') {
         return <InTheatersList
             inTheaters={inTheaters}
             inTheatersLoadingStatus={inTheatersLoadingStatus}
         />
     }
 
-    if (pathname === '/moviebe/intheaters') {
+    if (pathname === '/intheaters') {
         return <TemplatePageList items={inTheaters} inTheatersLoadingStatus={inTheatersLoadingStatus} />
     }
 }

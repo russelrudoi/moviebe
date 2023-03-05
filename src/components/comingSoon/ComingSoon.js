@@ -15,15 +15,15 @@ const ComingSoon = () => {
         dispatch(fetchComingSoon())
     }, [])
 
-    if (pathname === '/moviebe/') {
+    if (pathname === '/') {
         return <TemplateListSwiper
             data={comingSoon}
             title={'Coming Soon'}
             loadingStatus={comingSoonLoadingStatus}
-            linkPage={'/moviebe/comingsoon'} />
+            linkPage={'/comingsoon'} />
     }
 
-    if (pathname === '/moviebe/comingsoon') {
+    if (pathname === '/comingsoon') {
         return <TemplatePageList items={comingSoon} loadingStatus={comingSoonLoadingStatus} />
     }
 }

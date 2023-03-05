@@ -15,15 +15,15 @@ const Series = () => {
         dispatch(fetchSeries())
     }, [])
 
-    if (pathname === '/moviebe/') {
+    if (pathname === '/') {
         return <TemplateListSwiper
             data={series}
             title={'Series'}
             loadingStatus={seriesLoadingStatus}
-            linkPage={'/moviebe/series'} />
+            linkPage={'/series'} />
     }
 
-    if (pathname === '/moviebe/series') {
+    if (pathname === '/series') {
         return <TemplatePageList items={series} loadingStatus={seriesLoadingStatus} />
     }
 }

@@ -25,12 +25,12 @@ const App = () => {
         <main>
           <Suspense fallback={<Spinner />}>
             <Routes>
-              <Route path='/moviebe/' element={<MainPage />} />
-              <Route path='/moviebe/movies' element={<MoviesPage />} />
-              <Route path='/moviebe/series' element={<SeriesPage />} />
-              <Route path='/moviebe/intheaters' element={<InTheatersPage />} />
-              <Route path='/moviebe/comingsoon' element={<ComingSoonPage />} />
-              <Route path='/moviebe/:id' element={<SinglePage />} />
+              <Route path='/' element={<MainPage />} />
+              <Route path='/movies' element={<MoviesPage />} />
+              <Route path='/series' element={<SeriesPage />} />
+              <Route path='/intheaters' element={<InTheatersPage />} />
+              <Route path='/comingsoon' element={<ComingSoonPage />} />
+              <Route path='/:id' element={<SinglePage />} />
             </Routes>
           </Suspense>
         </main>

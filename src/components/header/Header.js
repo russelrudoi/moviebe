@@ -55,7 +55,7 @@ const Header = () => {
         'header-unfixed': hideNav
     })
 
-    if (pathname !== '/moviebe/') {
+    if (pathname !== '/') {
         return (
             <>
                 <HeaderPopDown
@@ -71,22 +71,22 @@ const Header = () => {
         <>
             <header className='header'>
                 <div className="container inner__wrapper">
-                    <Link to="/moviebe/" >
+                    <Link to="/" >
                         <img className='logo' src={Logo} alt="Logo" />
                     </Link>
                     <nav className='header__nav'>
                         <ul className='header__nav__list'>
                             <li>
-                                <Link to='/moviebe/movies'>MOVIES</Link>
+                                <Link to='/movies'>MOVIES</Link>
                             </li>
                             <li>
-                                <Link to='/moviebe/series'>SERIES</Link>
+                                <Link to='/series'>SERIES</Link>
                             </li>
                             <li>
-                                <Link to='/moviebe/intheaters'>IN THEATERS</Link>
+                                <Link to='/intheaters'>IN THEATERS</Link>
                             </li>
                             <li>
-                                <Link to='/moviebe/comingsoon'>COMING SOON</Link>
+                                <Link to='/comingsoon'>COMING SOON</Link>
                             </li>
                         </ul>
                     </nav>
@@ -106,22 +106,22 @@ const HeaderPopDown = ({ headerClass, burgerClass, handlerBurger }) => {
     return (
         <header className={`${headerClass}`}>
             <div className="container inner__wrapper">
-                <Link to="/moviebe/" >
+                <Link to="/" >
                     <img className='logo' src={Logo} alt="Logo" />
                 </Link>
                 <nav className='header__nav'>
                     <ul className='header__nav__list'>
                         <li>
-                            <NavLink to='/moviebe/movies'>MOVIES</NavLink>
+                            <NavLink to='/movies'>MOVIES</NavLink>
                         </li>
                         <li>
-                            <NavLink to='/moviebe/series'>SERIES</NavLink>
+                            <NavLink to='/series'>SERIES</NavLink>
                         </li>
                         <li>
-                            <NavLink to='/moviebe/intheaters'>IN THEATERS</NavLink>
+                            <NavLink to='/intheaters'>IN THEATERS</NavLink>
                         </li>
                         <li>
-                            <NavLink to='/moviebe/comingsoon'>COMING SOON</NavLink>
+                            <NavLink to='/comingsoon'>COMING SOON</NavLink>
                         </li>
                     </ul>
                 </nav>
@@ -137,16 +137,16 @@ const Modal = ({ modalClass }) => {
             <nav className='modal__nav'>
                 <ul className='modal__nav__list'>
                     <li>
-                        <Link to='/moviebe/movies'>MOVIES</Link>
+                        <Link to='/movies'>MOVIES</Link>
                     </li>
                     <li>
-                        <Link to='/moviebe/series'>SERIES</Link>
+                        <Link to='/series'>SERIES</Link>
                     </li>
                     <li>
-                        <Link to='/moviebe/intheaters'>IN THEATERS</Link>
+                        <Link to='/intheaters'>IN THEATERS</Link>
                     </li>
                     <li>
-                        <Link to='/moviebe/comingsoon'>COMING SOON</Link>
+                        <Link to='/comingsoon'>COMING SOON</Link>
                     </li>
                 </ul>
             </nav>

@@ -67,10 +67,10 @@ const InTheatersList = ({ inTheaters, inTheatersLoadingStatus }) => {
 
     return (
         <div className="in-theaters">
-            <h2 className="title">In theaters <Link to='/moviebe/intheatre'>see more...</Link></h2>
+            <h2 className="title">In theaters <Link to='/intheatre'>see more...</Link></h2>
             <div className="in-theaters__wrapper">
                 {elements}
-                <Link to='/moviebe/intheaters'>
+                <Link to='/intheaters'>
                     <button className="btn in-theaters__btn-link">see more</button>
                 </Link>
             </div>

@@ -70,7 +70,7 @@ const InTheatersListItem = ({ id, title, year, plot, image, imDbRating, metacrit
                     </div>
                 </div>
             </div>
-            <Link to={`/moviebe/${id}`}>
+            <Link to={`/${id}`}>
                 <button className="btn in-theaters__btn-watch">
                     watch
                 </button>

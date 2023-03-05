@@ -56,7 +56,7 @@ const Promo = () => {
                                 MC:<span>{metacriticRating}</span>
                             </div>
                         </div>
-                        <Link to={`/moviebe/${id}`}>
+                        <Link to={`/${id}`}>
                             <button className="btn promo__btn">more details</button>
                         </Link>
                     </div>
