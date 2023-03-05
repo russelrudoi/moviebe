@@ -10,7 +10,7 @@ export const fetchSeries = createAsyncThunk(
     'series/fetchSeries',
     async () => {
         const { request } = useHttp();
-        return await request('https://imdb-api.com/en/API/Top250TVs/k_dkokc24s')
+        return await request(`https://imdb-api.com/en/API/Top250TVs/${process.env.REACT_APP_API_KEY}`)
     }
 )
 

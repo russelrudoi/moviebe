@@ -32,6 +32,18 @@ const TemplateListSwiper = ({ data, title, loadingStatus, linkPage, withoutLink 
                 </div>
             </div>
         )
+    } else if (data.length === 0) {
+        return (
+            <div className="template-swiper">
+                <h2 className="title">
+                    {title}
+                </h2>
+                <div className="error">
+                    <img src={ErrorIcon} alt="" />
+                    <div>The maximum number of requests</div>
+                </div>
+            </div>
+        )
     }
 
     const renderTemplateList = (arr) => {

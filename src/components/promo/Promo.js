@@ -30,6 +30,17 @@ const Promo = () => {
                 <div className="promo__bg"></div>
             </div>
         )
+    } else if (promo.length === 0) {
+        return (
+            <div className="template-swiper">
+                <h2 className="title">
+                </h2>
+                <div className="error">
+                    <img src={ErrorIcon} alt="" />
+                    <div>The maximum number of requests</div>
+                </div>
+            </div>
+        )
     }
 
     const renderPromo = (arr) => {
@@ -73,7 +84,7 @@ const Promo = () => {
     return (
         <div className="promo">
             {element}
-            <img className="promo__bg" src={BackgroundImg}/>
+            <img className="promo__bg" src={BackgroundImg} />
             <div className="promo__bg_overlay"></div>
         </div>
     )

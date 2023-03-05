@@ -17,7 +17,7 @@ const SinglePage = () => {
     }, [id])
 
     const fetchSinglePage = async () => {
-        const res = await request(`https://imdb-api.com/en/API/Title/k_dhsgy58w/${id}/Images,Trailer,`);
+        const res = await request(`https://imdb-api.com/en/API/Title/k_ul7iq834/${id}/Images,Trailer,`);
         setData(res)
         setIsLoading(false)
     }

@@ -1,7 +1,7 @@
 import Series from "../series/Series"
 
 const SeriesPage = () => {
-    return <Series/>
+    return <Series />
 }
 
 export default SeriesPage

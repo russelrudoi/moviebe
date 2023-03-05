@@ -41,6 +41,16 @@ const InTheatersList = ({ inTheaters, inTheatersLoadingStatus }) => {
                 </div>
             </div>
         )
+    } else if (inTheaters.length === 0) {
+        return (
+            <div className="in-theaters">
+                <h2 className="title">In theaters</h2>
+                <div className="error">
+                    <img src={ErrorIcon} alt="" />
+                    <div>The maximum number of requests</div>
+                </div>
+            </div>
+        )
     }
 
     const renderList = (arr) => {

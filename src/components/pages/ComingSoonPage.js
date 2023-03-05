@@ -1,7 +1,7 @@
 import ComingSoon from "../comingSoon/ComingSoon"
 
 const ComingSoonPage = () => {
-    return <ComingSoon/>
+    return <ComingSoon />
 }
 
 export default ComingSoonPage

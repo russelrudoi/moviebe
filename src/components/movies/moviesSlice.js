@@ -10,7 +10,7 @@ export const fetchMovies = createAsyncThunk(
     'movies/fetchMovies',
     async () => {
         const { request } = useHttp();
-        return await request('https://imdb-api.com/en/API/Top250Movies/k_dhsgy58w')
+        return await request(`https://imdb-api.com/en/API/Top250Movies/${process.env.REACT_APP_API_KEY}`)
     }
 )
 

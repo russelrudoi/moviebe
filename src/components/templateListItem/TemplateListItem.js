@@ -35,7 +35,6 @@ const TemplateListItem = ({ title, year, image, id, imDbRating }) => {
 
     if (pathname === '/' || pathname === `/${id}`) {
         return (
-            // to={`${widthViewport > 1024 ? `/${id}` : ''}`}
             <Link to={`/${id}`}>
                 <div className='template__image' >
                     <img
@@ -44,9 +43,7 @@ const TemplateListItem = ({ title, year, image, id, imDbRating }) => {
                         loading='lazy'
                         alt='' />
                     <div className='template__image__overlay'>
-                        <Link to={`/${id}`}>
-                            <button className='template__image__btn'>watch</button>
-                        </Link>
+                        <button className='template__image__btn'>watch</button>
                         <span>
                             <div className="template__image__rating">IMDB: <span>{imDbRating}</span></div>
                         </span>
@@ -64,9 +61,7 @@ const TemplateListItem = ({ title, year, image, id, imDbRating }) => {
                 <div className='template__image'>
                     <img className={`${imageClass}`} src={changedImage} alt="movies" onLoad={handleImageLoaded} />
                     <div className='template__image__overlay'>
-                        <Link to={`/${id}`}>
-                            <button className='template__image__btn'>watch</button>
-                        </Link>
+                        <button className='template__image__btn'>watch</button>
                         <span>
                             <div className="template__image__rating">IMDB: <span>{imDbRating}</span></div>
                         </span>

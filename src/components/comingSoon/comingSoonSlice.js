@@ -10,7 +10,7 @@ export const fetchComingSoon = createAsyncThunk(
     'comingSoon/fetchComingSoon',
     async () => {
         const { request } = useHttp();
-        return await request('https://imdb-api.com/en/API/ComingSoon/k_dkokc24s')
+        return await request(`https://imdb-api.com/en/API/ComingSoon/${process.env.REACT_APP_API_KEY}`)
     }
 )
 
@@ -30,6 +30,6 @@ const comingSoonSlice = createSlice({
     }
 })
 
-const {reducer} = comingSoonSlice;
+const { reducer } = comingSoonSlice;
 
 export default reducer;

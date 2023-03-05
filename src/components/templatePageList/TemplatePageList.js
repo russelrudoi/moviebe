@@ -58,9 +58,20 @@ const TemplatePageList = ({ items, loadingStatus }) => {
                 Error
             </div>
         )
+    } else if (items.length === 0) {
+        return (
+            <div className="template-swiper">
+                <h2 className="title">
+                </h2>
+                <div className="error">
+                    <img src={ErrorIcon} alt="" />
+                    <div>The maximum number of requests</div>
+                </div>
+            </div>
+        )
     }
 
-    const changePage = () => {
+    function changePage() {
         const endOffset = itemOffset + itemsPerPage;
         setCurrentItems(items.slice(itemOffset, endOffset));
         setPageCount(Math.ceil(items.length / itemsPerPage));

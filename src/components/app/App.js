@@ -13,7 +13,6 @@ const MoviesPage = lazy(() => import("../pages/MoviesPage"));
 const SeriesPage = lazy(() => import("../pages/SeriesPage"));
 const InTheatersPage = lazy(() => import("../pages/InTheatersPage"));
 const ComingSoonPage = lazy(() => import("../pages/ComingSoonPage"));
-// const SingleItemLayout = lazy(() => import("../singleItemLayout/SingleItemLayout"));
 const SinglePage = lazy(() => import("../pages/SinglePage"));
 
 const App = () => {

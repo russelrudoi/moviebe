@@ -9,11 +9,11 @@ import '../../style/style.scss'
 const Header = () => {
     const [showModal, setShowModal] = useState(false);
     const [showNav, setShowNav] = useState(false);
-    const [hideNav, setHideNav] = useState(false);
+    const [disableNav, setDisableNav] = useState(false);
     const { pathname } = useLocation();
 
     useEffect(() => {
-        document.addEventListener('scroll', scrollHandler)
+        document.addEventListener('scroll', scrollHandler);
 
         return () => {
             document.removeEventListener('scroll', scrollHandler)
@@ -29,9 +29,9 @@ const Header = () => {
         }
 
         if (window.pageYOffset > 90 && window.pageYOffset < 550) {
-            setHideNav(true)
+            setDisableNav(true)
         } else {
-            setHideNav(false)
+            setDisableNav(false)
         }
 
     }
@@ -39,6 +39,10 @@ const Header = () => {
     const handlerBurger = (e) => {
         e.classList.toggle("header__burger_active");
         setShowModal(!showModal)
+    }
+
+    const hideModal = () => {
+        setShowModal(false)
     }
 
     const modalClass = classNames('modal', {
@@ -52,7 +56,7 @@ const Header = () => {
     const headerClass = classNames('header', {
         'header-hide': !showNav,
         'header-fixed': showNav,
-        'header-unfixed': hideNav
+        'header-unfixed': disableNav
     })
 
     if (pathname !== '/') {
@@ -62,7 +66,7 @@ const Header = () => {
                     headerClass={'header header-fixed'}
                     burgerClass={burgerClass}
                     handlerBurger={handlerBurger} />
-                <Modal modalClass={modalClass} />
+                <Modal modalClass={modalClass} hideModal={hideModal} />
             </>
         )
     }
@@ -97,7 +101,7 @@ const Header = () => {
                 headerClass={headerClass}
                 burgerClass={burgerClass}
                 handlerBurger={handlerBurger} />
-            <Modal modalClass={modalClass} />
+            <Modal modalClass={modalClass} hideModal={hideModal} />
         </>
     )
 }
@@ -131,25 +135,33 @@ const HeaderPopDown = ({ headerClass, burgerClass, handlerBurger }) => {
     )
 }
 
-const Modal = ({ modalClass }) => {
+const Modal = ({ modalClass, hideModal }) => {
     return (
-        <div className={`${modalClass}`}>
-            <nav className='modal__nav'>
-                <ul className='modal__nav__list'>
-                    <li>
-                        <Link to='/movies'>MOVIES</Link>
-                    </li>
-                    <li>
-                        <Link to='/series'>SERIES</Link>
-                    </li>
-                    <li>
-                        <Link to='/intheaters'>IN THEATERS</Link>
-                    </li>
-                    <li>
-                        <Link to='/comingsoon'>COMING SOON</Link>
-                    </li>
-                </ul>
-            </nav>
+        <div
+            className={`${modalClass}`}
+            onClick={() => hideModal()}
+        >
+            <div
+                className="modal__content"
+                onClick={e => e.stopPropagation()}
+            >
+                <nav className='modal__nav'>
+                    <ul className='modal__nav__list'>
+                        <li>
+                            <Link to='/movies'>MOVIES</Link>
+                        </li>
+                        <li>
+                            <Link to='/series'>SERIES</Link>
+                        </li>
+                        <li>
+                            <Link to='/intheaters'>IN THEATERS</Link>
+                        </li>
+                        <li>
+                            <Link to='/comingsoon'>COMING SOON</Link>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
         </div>
     )
 }

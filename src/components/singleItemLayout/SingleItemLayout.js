@@ -33,7 +33,7 @@ const SingleItemLayout = ({
     useEffect(() => {
         window.addEventListener("resize", resizeHandler);
         resizeHandler();
-        changeAmountImage()
+
         return () => {
             window.removeEventListener("resize", resizeHandler);
         };
@@ -41,12 +41,13 @@ const SingleItemLayout = ({
 
     const resizeHandler = () => {
         setWidthViewport(window.innerWidth);
+        changeAmountImage()
     };
 
     const changeAmountImage = () => {
-        console.log(widthViewport)
         if (widthViewport > 1240) {
-            
+            setWidthVideo("854")
+            setHeightVideo("480")
             setAmountImage(3)
             return
         }
@@ -62,12 +63,11 @@ const SingleItemLayout = ({
             setWidthVideo("560")
             setHeightVideo("315")
             return
+        } else {
+            setWidthVideo("480")
+            setHeightVideo("270")
+            setAmountImage(0)
         }
-
-        setWidthVideo("480")
-        setHeightVideo("270")
-        setAmountImage(0)
-
     }
 
     let changedImage = '';
@@ -93,9 +93,11 @@ const SingleItemLayout = ({
                     })
 
                     return (
-                        <div className={`${imageWrapperClass}`}
+                        <div
+                            className={`${imageWrapperClass}`}
                             data-fancybox="gallery"
-                            data-src={changedImage}>
+                            data-src={changedImage}
+                            key={index}>
                             <img
                                 src={changedImage}
                                 alt="Galerie" />
